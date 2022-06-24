@@ -1,5 +1,62 @@
+.formWrapper .gform_required_legend {
+    display: none;
+}
+
+
+.formWrapper .gfield {
+    margin-bottom: 20px;
+    border-bottom: #4F91B7 2px solid;
+}
+
+.formWrapper .gfield.spacer {
+    display: none;
+}
+
+.formWrapper .gfield {
+    position: relative;
+}
+
+.formWrapper form .gform_fields .gfield label.gfield_label {
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: .025em;
+    color: #096198;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    transition: all .3s ease;
+}
+
+.formWrapper form .gform_fields .gfield .ginput_container>* {
+    background-color: transparent;
+    border: 0;
+    color: #096198;
+    font-size: 16px;
+    -webkit-appearance: none;
+    outline: 0;
+}
+
+.formWrapper form .gform_fields .gfield label.gfield_label {
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: .025em;
+    color: #eaeef1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    transition: all .3s ease;
+}
+
 .formWrapper form .gform_fields .gfield label.gfield_label.focused {
     font-size: 12px;
     top: -5%;
-    color: #908c82;
+    color: #eaeef1;
 }
