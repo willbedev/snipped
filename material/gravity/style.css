@@ -1,0 +1,5 @@
+.formWrapper form .gform_fields .gfield label.gfield_label.focused {
+    font-size: 12px;
+    top: -5%;
+    color: #908c82;
+}
