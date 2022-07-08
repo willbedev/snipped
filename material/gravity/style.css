@@ -1,14 +1,3 @@
-.gform_wrapper.gravity-theme #field_submit{
-  flex-direction:column-reverse;
-}
-.gform_wrapper.gravity-theme #field_submit p {
-  text-align: right;
-}
-
-.gform_required_legend {
-  display: none;
-}
-
 
 .formWrapper .gfield {
   position: relative;
