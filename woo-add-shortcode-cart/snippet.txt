@@ -1,0 +1,7 @@
+// ADD SHORTCODE CART//
+
+add_action( 'woocommerce_cart_collaterals', 'cart_collaterals' );
+ 
+function cart_collaterals (){
+    echo (do_shortcode('[elementor-template id="4149"]') );
+}

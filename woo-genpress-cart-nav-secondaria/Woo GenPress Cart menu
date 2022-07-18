@@ -1,0 +1,6 @@
+*/ Per cambiare la posizione del menu cart dalla navifgaizone princilae. alla secondaria */
+
+add_filter( 'generate_woocommerce_menu_item_location', 'tu_move_menu_cart_item' );
+function tu_move_menu_cart_item() {
+    return 'secondary';
+}
