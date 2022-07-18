@@ -1,0 +1,14 @@
+/* Es div con cookie non accettati: 
+https://daniele.comarca.s3.iubenda.com.s3.amazonaws.com/ShareX/2019/condivisa/provaVIMEO.html
+â€¨â€¨il risultato si ottiene con questo semplice CSS */
+
+
+
+.holds-the-iframe {
+    background:url(loader.png) center center no-repeat;
+}
+
+
+
+/* si imposta un background per l'iframe con un messaggio praticamente,
+poi al momento dell'accettazione ovviamente il messaggio viene coperto dal video che viene caricato */
