@@ -1,0 +1,8 @@
+   /*Mettere la classe flip nel contenitore delle due colonne*/
+   /*Copiare il css nella query di break point*/
+   .flip { 
+        display: -webkit-flex;
+        -webkit-flex-direction: column-reverse;
+        display: flex;
+        flex-direction: column-reverse !important;}
+    }
