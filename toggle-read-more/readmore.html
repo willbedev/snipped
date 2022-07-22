@@ -1,0 +1,23 @@
+Crea modulo Testo per tenere il paragrafo da leggere cliccando su "read more" con id => #read-more-text
+Crea modulo bottone per il readmore/less toggle con le classi => .read-more-button .closed
+Togliere # e . da id e clasis
+/* CSS TO ADD */
+<style>
+.read-more-button.closed:before {content:"\33" !important;}
+.read-more-button.opened:before{content:"\32" !important;}
+</style>
+
+/* ADD JAVASCRIPT TO INTEGRATION */
+
+<script type="text/javascript">
+ jQuery(document).ready(function() {
+// Hide the div
+jQuery('#read-more-text').hide();
+jQuery('.read-more-button').click(function(e){
+e.preventDefault();jQuery("#read-more-text").slideToggle();
+jQuery('.read-more-button').toggleClass('opened closed');
+jQuery('.opened').html('Read Less');
+jQuery('.closed').html('Read More');
+});
+});
+</script>
