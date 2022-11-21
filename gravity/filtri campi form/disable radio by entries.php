@@ -4,7 +4,7 @@ function stampa_numero_entries_dentro_field($choice_markup, $choice, $field, $va
 
  if ( $field->get_input_type() == 'radio' && rgar( $choice, 'text' ) == 'Prima scelta' ) {
        $search_criteria['field_filters'][] = array( 'key' => '18', 'value' => 'Prima scelta' );
-       $entries = GFAPI::count_entries(2,$search_criteria);
+       $entries = GFAPI::count_entries(2,$search_criteria);  /* nunerp id della form */
        if($entries == 2){
          $choice_markup = str_replace( "type='radio'", "type='radio' disabled", $choice_markup );
        }
