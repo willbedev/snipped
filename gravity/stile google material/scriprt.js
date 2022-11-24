@@ -93,3 +93,14 @@ if(document.querySelector(".Mustread")){
         },
     )
 }
+
+
+//inside a gravity form html block
+<script type="text/javascript">
+        jQuery(document).ready(function(){
+            /* apply only to a input with a class of gf_readonly */
+            jQuery(".gf_readonly input").attr("readonly","readonly");
+ jQuery(".gf_readonly select").attr("disabled","disabled");
+ jQuery(".placeholderhollow option.gf_placeholder").text("\n");
+        });
+</script>
