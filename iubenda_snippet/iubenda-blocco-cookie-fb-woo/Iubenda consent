@@ -1,0 +1,8 @@
+*/ FONTE https://github.com/woocommerce/facebook-for-woocommerce/issues/301 */
+
+add_filter('wc_facebook_pixel_script_attributes','wc_facebook_pixel_script_attributes_callback');
+function wc_facebook_pixel_script_attributes_callback() {
+  return array('type' => 'text/plain', 
+               'class' => '_iub_cs_activate-inline', 
+			   'data-iub-purposes' => 5);
+}
