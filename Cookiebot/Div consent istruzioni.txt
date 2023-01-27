@@ -1,0 +1,23 @@
+fonte: https://support.cookiebot.com/hc/en-us/articles/360003812053-Hide-and-show-content-based-on-the-visitor-s-consent?source=search&auth_token=eyJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoyMzAzMTEzLCJ1c2VyX2lkIjo3NDA5NzE0NjQ3OTY0LCJ0aWNrZXRfaWQiOjEyNjU3OSwiY2hhbm5lbF9pZCI6NjMsInR5cGUiOiJTRUFSQ0giLCJleHAiOjE2NzczMjQ0MzN9.XZMrfZE-tYIvn2pPUpb9gjB_8vPKY88ff0oQJVyF7LU
+
+
+
+.cookieconsent-optin	Visible when user has opted in for one or more types of cookies, otherwise hidden
+.cookieconsent-optout	Visible when user has not yet submitted a consent or has opted out of all but strictly necessary cookies, otherwise hidden
+.cookieconsent-optout-preferences	Visible when user has opted out of preferences cookies, otherwise hidden
+.cookieconsent-optout-statistics	Visible when user has opted out of statistics cookies, otherwise hidden
+.cookieconsent-optout-marketing	Visible when user has opted out of marketing cookies, otherwise hidden
+.cookieconsent-optin-preferences	Visible when user has opted in for preferences cookies, otherwise hidden
+.cookieconsent-optin-statistics	Visible when user has opted in for statistics cookies, otherwise hidden
+.cookieconsent-optin-marketing	Visible when user has opted in for marketing cookies, otherwise hidden
+
+Here is an example of you how you can use these classes:
+
+<div class="cookieconsent-optin-marketing">
+  This content is only visible when the visitor has consented to marketing cookies.
+</div>
+
+<div class="cookieconsent-optout-marketing">
+  Please <a href="javascript: Cookiebot.renew()">accept marketing cookies</a>
+  to view this content.
+</div>
