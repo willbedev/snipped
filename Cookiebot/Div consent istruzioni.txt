@@ -21,3 +21,23 @@ Here is an example of you how you can use these classes:
   Please <a href="javascript: Cookiebot.renew()">accept marketing cookies</a>
   to view this content.
 </div>
+
+
+
+***** Attributo ingnore per video in DNT *****
+aggiungere  data-cookieconsent="ignore"
+
+ <iframe
+            id="desktop-banner"
+            class="fitvidsignore"
+            src="https://player.vimeo.com/video/667874694?h=ab8daef903&background=1&autoplay=1&loop=1&byline=0&title=0&dnt=1"
+            frameborder="0"
+            webkitallowfullscreen
+            mozallowfullscreen
+            allowfullscreen
+            data-cookieconsent="ignore" >
+ </iframe>
+
+
+video in DNT
+&dnt=1
