@@ -1,0 +1,15 @@
+/* dare sempre la classe al container principale*/
+
+.container {
+	display: grid;
+
+}
+ 
+
+.note-colonne  {
+	grid-template-columns: repeat(3, 1fr);
+	
+	grid-template-columns: 1fr 1fr 1fr;  /* stessa visualizzazione come per il repeat sopra */
+	
+	grid-template-columns: repeat(3, minmax(200px, auto));  /* larghezza minima 200px delle colonne */
+}
