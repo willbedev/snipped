@@ -12,4 +12,6 @@
 	grid-template-columns: 1fr 1fr 1fr;  /* stessa visualizzazione come per il repeat sopra */
 	
 	grid-template-columns: repeat(3, minmax(200px, auto));  /* larghezza minima 200px delle colonne */
+	
+	grid-template-rows: auto; /* altezza autoamtica, posso scrivere anche un valore es. 200px delle colonne */
 }

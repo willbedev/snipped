@@ -1,0 +1,12 @@
+/* risorsa da https://codegrind.it/css/flexbox-css-lezione-20/ */
+
+
+
+.section {
+	display: flex;
+    flex-flow: row wrap; /* mettiamo prima la direzione row o columns e poi l'eventuale wrap per andare a capo */
+}
+
+
+
+ 
