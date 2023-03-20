@@ -1,0 +1,58 @@
+/* */
+
+/*  ereditarietà   */
+/* il css viene letto dall'alto verso il basso */
+.div  h1 { color: red; }
+.div  h1 {
+    color: rgb(0, 255, 238);  /* stessa regola ma sovrascrive la precedente perchè più in basso */
+    all: unset; /* disabilita tutti gli stili ereditati e li resetta a default */
+}
+
+/* Con la specificità viene data più importanza alla classe rispetto agli elementi come gli H,
+ l'ID è il più importante dopo però lo stile in linea che sovrascrive tutto,
+ !important sovrascrive la specificità */ 
+
+
+
+
+/*  FLOAT   */
+
+.div-float {
+    float: left; /* quando */
+    margin-right: 50px; /* distanzia solo i div vicini ma non il contrario */
+    clear: left; /* atenzione che interrompe il fload del div a seconda s eè right o left */ 
+
+}
+
+/* POSITION RELATIVE  */
+.div {
+    position: relative; /* setta x e y in base alla poszione dell'elemento */ 
+    position: fixed; /* setta x e y in base al vieport  */ 
+    position: sticky; /* setta in stiky l'elemento durante lo scoll, 
+                        il valore top funziona solo quando entra lo sticky  */ 
+    top: XX; /*valoro in px e %  */  
+    bottom: XX;
+}
+
+
+/* DIMENSIONI */
+
+.div {
+    width: 1vw; /*  tutta la larghezza del viewport */
+    width: 1vh; /* tutta l'altezza del viewport, tutta l'area visibile del browser */
+}
+
+
+
+/*  Valori e unità di misura */
+/* guida mozilla https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units*/ 
+
+.div {
+    font-size: 20em;     /*  prende il size dal parent, il div superiore, se non ha valore passa al div sopra */
+    font-size: 20rem;    /*  prende il size dalla root (solitamente il body),
+                             quindi salta le regole di em e del livello superiore */
+    font-size: 1vh;    /*  1% del vieport */
+    width: 30%; /* tute le percentuali sono sempre riferite al parent */
+    width: cal(20% + 100px); /* 20% de parent + 100 px */
+}
+

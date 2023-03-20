@@ -1,12 +1,24 @@
-/* risorsa da https://codegrind.it/css/flexbox-css-lezione-20/ */
-
+/* risorsa video da https://codegrind.it/css/flexbox-css-lezione-20/ */
+/* Il contenitore deve essere in flex  */ 
 
 
 .section {
 	display: flex;
     flex-flow: row wrap; /* mettiamo prima la direzione row o columns e poi l'eventuale wrap per andare a capo */
+    flex-direction: row; /* remette di cambiar il layout da row a colonne, anche in fuznione reverse*/ 
+    flex-wrap: wrap; /* manda a capo le colonne  occorre però dare una dimensione alla colonna es. .article > flex:200px */ 
+    justify-content: space-between; /* allinea i box interni ai lati sfruttando tutto lo spazio */
+    justify-content: space-evenly; /* spazi equidistanti, altre varianti */ 
+    justify-content: center; /* allinea verticalmente */ 
 }
 
 
+.article {
+    display: flex; /* può essere assegnato anche ai box dentro il container principale che hanno dei div nidificati */ 
+    flex: 200px; /* es. di dimesione fissa con il wrap nel container */ 
+    flex: 1; /* così si sa dimensione relativa,
+            se si da 2 prende il doppo dello spazio sempr econ flex wrap al container */ 
+    order: -1; /* porta all'inizio il box,
+                oppure inserire una class in ogni box e assegnare il numero di ordine desiderato */ 
 
- 
+}
