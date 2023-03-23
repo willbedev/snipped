@@ -1,6 +1,6 @@
 // Per chiudere di default l'accordion
-//Da inserire su file JSON
-// Per aprore tab specifici vedere guida https://element.how/elementor-open-specific-tab-toggle-accordion/
+// Da inserire su file JSON
+// Per aprire tab specifici vedere guida https://element.how/elementor-open-specific-tab-toggle-accordion/
 
 jQuery(document).ready(function($) { 
     
