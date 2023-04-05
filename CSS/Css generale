@@ -1,4 +1,6 @@
-/* */
+/* Statistiche browser utilizati */
+/* https://gs.statcounter.com/ */ 
+/* compatibilità css: https://caniuse.com/ */
 
 /*  ereditarietà   */
 /* il css viene letto dall'alto verso il basso */
@@ -56,3 +58,14 @@
     width: cal(20% + 100px); /* 20% de parent + 100 px */
 }
 
+
+/*  Multi Colonna */
+
+
+.div {
+    column-count: 3; /* divide il contenuto in 3 colonne uguali */
+    column-width: 200px; /*divide il contenuto in tante colonen da 200px finchè ci stanno */
+    column-gap: 20px; /* distanza */
+    column-rule: 2px solid black; /* linee verticali fra colonne */
+    column-span:all; /* prende tutta la larghezza */
+}

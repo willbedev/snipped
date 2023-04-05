@@ -1,12 +1,13 @@
 /* dare sempre la classe al container principale*/
+/* risorsa https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout */ 
 
 .container {
 	display: grid;
 
 }
  
-
-.note-colonne  {
+/* Note sulle colonne del container */ 
+.container {
 	grid-template-columns: repeat(3, 1fr);
 	
 	grid-template-columns: 1fr 1fr 1fr;  /* stessa visualizzazione come per il repeat sopra */
@@ -14,4 +15,16 @@
 	grid-template-columns: repeat(3, minmax(200px, auto));  /* larghezza minima 200px delle colonne */
 	
 	grid-template-rows: auto; /* altezza autoamtica, posso scrivere anche un valore es. 200px delle colonne */
+
+	grid-auto-rows: 200px; /* imposta l'attezza delel riche tutte a 200px */
+
+	grid-template-columns: repeat (auto-fill, minmax(200px, auto));
+	/* con autofill fa slittare sotto le colonne quando non ci stanno tenento la larghezza minima a 200px*/ 
+
+
+}
+
+.box-interno {
+	/* se il container è impostato su 3 colonne (1fr 1fr 1fr)*/ 
+	grid-column: 1/4; /* Prende tutte e 3 le colonne in larghezza, con 1/3 prende due terzi */ 
 }

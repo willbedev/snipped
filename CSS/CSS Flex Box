@@ -17,8 +17,8 @@
     display: flex; /* può essere assegnato anche ai box dentro il container principale che hanno dei div nidificati */ 
     flex: 200px; /* es. di dimesione fissa con il wrap nel container */ 
     flex: 1; /* così si sa dimensione relativa,
-            se si da 2 prende il doppo dello spazio sempr econ flex wrap al container */ 
-    order: -1; /* porta all'inizio il box,
+            se si da 2 prende il doppo dello spazio sempre con flex wrap al container */ 
+    order: -1; /* porta all'inizio il box, viene utilizzato anche per portare a row 100% in caso di row wrap
                 oppure inserire una class in ogni box e assegnare il numero di ordine desiderato */ 
 
 }
