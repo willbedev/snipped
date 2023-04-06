@@ -10,12 +10,14 @@
     justify-content: space-between; /* allinea i box interni ai lati sfruttando tutto lo spazio */
     justify-content: space-evenly; /* spazi equidistanti, altre varianti */ 
     justify-content: center; /* allinea verticalmente */ 
+    row-gap: 40px;
+    column-gap: 20px;
 }
 
 
 .article {
     display: flex; /* può essere assegnato anche ai box dentro il container principale che hanno dei div nidificati */ 
-    flex: 200px; /* es. di dimesione fissa con il wrap nel container */ 
+    flex: 200px; /* es. di dimesione fissa con il wrap nel container oppure in % */ 
     flex: 1; /* così si sa dimensione relativa,
             se si da 2 prende il doppo dello spazio sempre con flex wrap al container */ 
     order: -1; /* porta all'inizio il box, viene utilizzato anche per portare a row 100% in caso di row wrap
