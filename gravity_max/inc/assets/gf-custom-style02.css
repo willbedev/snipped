@@ -1,0 +1,174 @@
+:root {
+	--white-color: #fff;
+	--nobackground-border-text-color: #707070;
+
+    --title-color: #00AAB1;
+
+    --label-color: #707070;
+    --label-error-color: #009ee2;
+    --label-required-color: #707070;
+
+    --label-focused: #00aab1;
+    --label-focused-background-color: #fff;
+
+    --input-text-color: #707070;
+    --input-border-color: #707070;
+
+    --input-file-upload-color: #00aab1;
+
+    --input-submit-text-color: #fff;
+    --input-submit-background-color: #00aab1;
+
+    --gfield-error-input-color: #c02b0a;
+
+    --gfield-choice-checkbox: #707070;
+    --gfield-choice-checkbox-label: #707070;
+    --gfield-choice-checkbox-label-link: #707070;
+
+    --step-number-color: #585e6a;
+    --step-number-active-color: #0066CC;
+    --step-number-complete-color: #0066CC;
+
+    --step-label-color: #5B6F82;
+    --step-label-active-complete-color: #0066CC;
+
+    --required-text-footer-color: #707070;
+}
+
+/* title */
+.gform_heading .gform_title {
+    color: var(--title-color);
+}
+/* end title */
+
+/* label */
+form[id^='gform'] .gfield_label.gform-field-label {
+	color: var(--label-color);
+    left: 10px;
+}
+form[id^='gform'] .gfield label.gfield_label.focused {
+    color: var(--label-focused);
+    background-color: var(--label-focused-background-color);
+}
+form[id^='gform'] .gfield_error label, form[id^='gform'] .gfield_error .gfield_required {
+    color: var(--label-error-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_required {
+    color: var(--label-required-color);
+}
+/* end label */
+
+/* input */
+.gform_wrapper.gravity-theme form[id^='gform'] input:not([type='file']):not([type='checkbox']):not([type='submit']),
+.gform_wrapper.gravity-theme form[id^='gform'] textarea {
+    height: 50px;
+    border-radius: 4px;
+    border-color: var(--input-border-color);
+    padding: 10px 15px 5px 5px;
+    transition: all .2s ease;
+    letter-spacing: .025em;
+    /*color: var(--input-text-color);*/
+    font-size: 20px;
+    font-weight: 400;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error [aria-invalid=true] {
+    border: none;
+}
+/* end input */
+
+/* step */
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_active .gf_step_number {
+	background-color: var(--step-number-active-color);
+	color: var(--white-color);
+}
+.gform_wrapper.gravity-theme .gf_step_label {
+	color: var(--step-label-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_number {
+	background: var(--white-color);
+	color: var(--step-number-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_completed .gf_step_number {
+	background-color: var(--step-number-complete-color);
+	color: var(--white-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_active .gf_step_label,
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_completed .gf_step_label {
+	color: var(--step-label-active-complete-color);
+}
+/* end steps */
+
+/* checkbox / radio button */
+form[id^='gform'] .gfield_checkbox label {
+    color: var(--gfield-choice-checkbox-label);
+}
+form[id^='gform'] .gfield_checkbox label a {
+    color: var(--gfield-choice-checkbox-label-link);
+}
+form[id^='gform'] input.gfield-choice-input {
+	border: 2px solid var(--gfield-choice-checkbox);
+}
+form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:before {
+	background-color: var(--gfield-choice-checkbox);
+}
+
+
+/* Trasforma il pulsante input file upload input[type="file"] */
+
+/* Chrome, Safari */
+/*#gform_8 ::-webkit-file-upload-button {*/
+form[id^='gform'] ::-webkit-file-upload-button {
+    background: var(--white-color);
+    border: 2px solid var(--input-file-upload-color);
+    border-radius: 4px;
+    color: var(--input-file-upload-color);
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 15px;
+    width: 200px;
+    line-height: 1.3em;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+}
+/*input[type="file"]::file-selector-button {*/
+form[id^='gform'] input[type="file"]::file-selector-button {
+    background: var(--white-color);
+    border: 2px solid var(--input-file-upload-color);
+    border-radius: 4px;
+    color: var(--input-file-upload-color);
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 10px;
+    width: 200px;
+    line-height: 1.3em;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+}
+/* Edge */
+/*#gform_8 ::file-upload-button{*/
+form[id^='gform'] ::file-upload-button{
+    background: var(--white-color);
+    border: 2px solid var(--input-file-upload-color);
+    border-radius: 4px;
+    color: var(--input-file-upload-color);
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 10px;
+    width: 200px;
+    line-height: 1.3em;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+}
+/* END: pulsante input file upload input[type="file"] */
+
+/* gform footer (submit container) */
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_footer .required-text ,
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer .required-text {
+	color: var(--required-text-footer-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_footer input[type='submit'],
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer input[type='submit']{
+	background-color: var(--input-submit-background-color);
+    color: var(--white-color);
+}
+/* end gform footer (submit container) */

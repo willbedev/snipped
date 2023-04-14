@@ -1,0 +1,101 @@
+form[id^='gform'] .gfield {
+	position: relative;
+}
+form[id^='gform'] .gfield_label.gform-field-label {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	transition: all .3s ease;
+	font-weight: 400;
+	font-size: 18px;
+	text-transform: none;
+    letter-spacing: .025em;
+}
+form[id^='gform'] .gfield label.gfield_label.focused {
+	font-size: 12px;
+	top: 0;
+}
+form[id^='gform'] .gfield.gfield_error label.gfield_label {
+	top: 40%;
+}
+form[id^='gform'] div[id^='validation_message'] {
+	display: none;
+}
+
+/* step */
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_active .gf_step_number {
+	border: 0;
+	font-size: 20px;
+}
+  
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_label {
+	font-size: 18px;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_number {
+	border: 0;
+	border-radius: 20px;
+	font-size: 20px;
+	font-weight: 500;
+	height: 40px;
+	text-align: center;
+	width: 40px;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_completed .gf_step_number {
+	border: 0;
+	font-size: 20px;
+}
+form[id^='gform'] .gf_page_steps {
+	border-bottom: 0;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_completed .gf_step_number::after,
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_completed .gf_step_number::before {
+	content: none;
+}
+/* end steps */
+
+/* checkbox / radio button */
+form[id^='gform'] input[type='radio'],
+form[id^='gform'] input[type='checkbox'] {
+  position: relative;
+}
+form[id^='gform'] input.gfield-choice-input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	margin-right: 5px;
+	position: relative;
+	margin-top: 3px;
+	vertical-align: top;
+}
+form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:before {
+	content: "";
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	top: 2px;
+	left: 2px;
+}
+form[id^='gform'] .gfield_checkbox label a {
+	text-decoration: underline;
+}
+/* end checkbox / radio button */
+
+/* gform footer (submit container) */
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_footer,
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer {
+	justify-content: space-between;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_footer input[type='submit'],
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer input[type='submit']{
+	border-radius: none;
+	text-transform: uppercase;
+}
+/* end gform footer (submit container) */
