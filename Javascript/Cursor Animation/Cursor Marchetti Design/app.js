@@ -28,3 +28,5 @@ titolo.forEach((item) => { //impostata la variabile a
 
   });
 });
+
+// prova modifica.
