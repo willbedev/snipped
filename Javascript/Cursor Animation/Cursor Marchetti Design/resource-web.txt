@@ -1,0 +1,16 @@
+https://greensock.com/forums/topic/28314-help-with-custom-cursor/
+https://codepen.io/akapowl/pen/WNpORzr/9957de7f4c8c273f30d67cb09db000e5
+https://codepen.io/soleneramis/pen/zYGaEjN
+https://codepen.io/GreenSock/pen/WNNNBpo
+
+
+
+https://www.marchettidesign.net/vip/
+psw: staytuned!
+tutorial: https://www.youtube.com/watch?v=SRCgbRi5Jlo
+
+
+/*** Michael Gudzevskyi ***/
+https://github.com/michaelgudzevskyi/cursor-hover-effect-gsap
+http://michaelgudzevskyi.com/cursor-hover-effect-gsap/
+https://www.jqueryscript.net/animation/custom-cursor-magnetic.html

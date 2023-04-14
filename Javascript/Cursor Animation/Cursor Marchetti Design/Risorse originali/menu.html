@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+  /* Reset */ 
+  body, html{background: #222; color:#999; font-family: 'Raleway', Arial, Helvetica, sans-serif; line-height: 1; font-size: 16px; box-sizing: border-box;margin: 0;padding: 0;}*,*:before,*:after{ box-sizing: border-box; }h1,h2,h3,h4,h5,h6, p, ol, ul{margin: 0 0 1rem 0;padding: 0;}ol,ul{padding-left: 20px;line-height: 1.5;}img{height: auto;}h1{font-size: 4rem;} h2{font-size: 3rem;} h3{font-size: 2rem;} h4{font-size: 1rem;} h5{font-size: 0.8rem;} h6{font-size: 0.6rem;}a{text-decoration:none}
+  body{padding: 20%;line-height: 1.5;}
+  a{color:#eee}
+
+
+* {cursor:none}
+.outline {
+  width: 64px;
+  height: 64px;
+  mix-blend-mode: difference;
+  border-radius: 100%;
+  border: 1px solid #fff;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  position: fixed;
+  pointer-events: none;
+  left: 0px;
+  top: 0px;
+  z-index: 999999;
+  transform: translate( -64px, -64px );
+  border: 1px solid #fff;
+}
+
+.cursor {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background: #fff;
+  opacity: .8;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate( 50vw, -100px );
+}
+
+.outline.hover{    
+    width: 128px;
+    height: 128px;
+    background-color: #ff375f;
+    border-color: #ff375f;
+}
+.outline.hover::after{
+  content: '';
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://alien.haldenvgs.net/images/cursor.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cursor.hover{
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+
+  .cursor,
+  .outline{display: none;}
+
+}
+
+/* Nav hamburger */
+
+#nav-hamburger {
+  margin: 0;
+  width: 2em;
+  height: 1.5em;
+  position: absolute;
+  transform: rotate(0deg);
+  transition: .35s cubic-bezier(.175,.685,.32,1.175);
+  z-index: 110;
+  top:10%;
+  left:10%;
+  z-index: 999999;
+}
+#nav-hamburger span {
+  left: 0;
+  width: 100%;
+  height: 2px;
+  display: block;
+  position: absolute;
+  background: #fff;
+  border-radius: 19px;
+  opacity: 1;
+  transform: rotate(0deg);
+  transition: .35s cubic-bezier(.175,.685,.32,1.175);
+}
+#nav-hamburger span:nth-child(1) {
+  top: 0;
+  width: 100%;
+}
+#nav-hamburger span:nth-child(2),
+#nav-hamburger span:nth-child(3) {
+  top: 10px;
+  width: 35%;
+}
+#nav-hamburger span:nth-child(4) {
+  top: 20px;
+  width: 65%;
+}
+
+/* open */
+.open #nav-hamburger{
+  transform: rotate(180deg);
+}
+.open #nav-hamburger span:nth-child(1) {
+  top: 2em;
+  width: 0;
+}
+.open #nav-hamburger span:nth-child(2) {
+  width: 100%;
+  transform: rotate(45deg);
+}
+.open #nav-hamburger span:nth-child(3) {
+  width: 100%;
+  transform: rotate(-45deg);
+}
+.open #nav-hamburger span:nth-child(4) {
+  top: 18px;
+  width: 0;
+  left: 50%;
+}
+
+/* menu */
+
+.menu{ 
+  background: #000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0%; 
+  left:-100%; 
+  z-index: 999;
+  padding: 15% 10%;
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(.215, .61, .355, 1);
+}
+.menu a{
+  display: block;
+  position: relative;
+}
+.menu a span{
+  position: relative;
+  display: block;
+  z-index: 2;
+  font-size: 60px;
+  text-transform: uppercase;
+  opacity: 0.3;
+
+}
+.menu a img{
+  position: absolute;
+  opacity: 0;
+  z-index: 0;
+  transform: translate(-50%,-50%) scale(0.5);
+  transition: all 1s cubic-bezier(.215, .61, .355, 1);
+  pointer-events: noen;
+  width: min(40vh, 600px);
+}
+.menu a:hover span{
+  opacity: 1;
+}
+.menu a:hover img{
+  
+  opacity: 1;
+  transform: translate(-50%,-50%) scale(1);
+  transition: all 1s cubic-bezier(.215, .61, .355, 1);
+}
+
+.open .menu{
+  left:0;
+  opacity: 1;
+
+}  
+
+
+  
+  
+  </style>
+
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="outline"></div>
+
+  <div id="nav-hamburger" class="link">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="menu">
+
+    <a href="">
+      <span>Home</span> 
+      <img src="https://unsplash.it/640/425?image=40" alt="">
+    </a>
+
+    <a href="">
+      <span>About</span> 
+      <img src="https://unsplash.it/640/425?image=100" alt="">
+    </a>
+    
+    <a href="">
+      <span>Services</span>
+    <img src="https://unsplash.it/640/425?image=190" alt="">
+
+    </a>
+    <a href="">
+      <span>Contacts</span> 
+    <img src="https://unsplash.it/640/425?image=180" alt="">
+
+    </a>
+  </nav>
+
+
+  <h1 cursor-class="arrow"><a href="#">Hey, Ciao Mondo!</a></h1>
+
+  <p>Lorem, ipsum dolor sit amet consectetur <a href="#">Lorem</a> adipisicing elit. Eveniet, quisquam, sunt odit quidem blanditiis nostrum corporis iure reiciendis quo illo quia! Officia voluptas esse, eaque est expedita odit suscipit quam?</p>
+
+   <script> 
+
+
+/* menu */
+let items = document.querySelectorAll('.menu a');
+
+
+for (let item of items) {
+
+  item.addEventListener("mousemove", function(e){
+
+    const rect = item.getBoundingClientRect();
+    const img = item.querySelector('img');
+
+    img.style.left = `${e.clientX - rect.left}px`;
+    img.style.top = `${e.clientY - rect.top}px`;
+
+  });
+
+}
+   
+   
+   /* hamburger */ 
+  
+
+
+let item = document.querySelector('#nav-hamburger');
+item.addEventListener("click", function() {
+  document.body.classList.toggle('open');
+});
+
+/*  -----------------------------------------------------------------------------------------------
+  cusrom custom
+--------------------------------------------------------------------------------------------------- */
+
+let outline = document.querySelector('.outline');
+let cursor = document.querySelector('.cursor');
+let a = document.querySelectorAll('.link, a');
+
+
+document.addEventListener('mousemove', function(e){
+  let x = e.clientX;
+  let y = e.clientY;
+  outline.style.transform = `translate( calc(${x}px - 50%), calc(${y}px - 50%) )`;
+  cursor.style.transform = `translate( calc(${x}px - 50%) , calc(${y}px - 50%) )`;
+});
+
+
+a.forEach((item) => {
+  item.addEventListener('mouseover', () => {
+    outline.classList.add('hover');
+    cursor.classList.add('hover');
+  });
+  item.addEventListener('mouseleave', () => {
+    outline.classList.remove('hover');
+    cursor.classList.remove('hover');
+
+  });
+});
+
+
+
+  
+  </script>
+
+</body>
+</html>

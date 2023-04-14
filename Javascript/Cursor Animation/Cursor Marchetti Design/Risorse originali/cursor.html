@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+  /* Reset */ 
+  body, html{background: #222; color:#999; font-family: 'Inter', Arial, Helvetica, sans-serif; line-height: 1; font-size: 16px; box-sizing: border-box;margin: 0;padding: 0;}*,*:before,*:after{ box-sizing: border-box; }h1,h2,h3,h4,h5,h6, p, ol, ul{margin: 0 0 1rem 0;padding: 0;}ol,ul{padding-left: 20px;line-height: 1.5;}img{height: auto;}h1{font-size: 4rem;} h2{font-size: 3rem;} h3{font-size: 2rem;} h4{font-size: 1rem;} h5{font-size: 0.8rem;} h6{font-size: 0.6rem;}a{text-decoration:none}
+  body{padding: 20%;line-height: 1.5;}
+  a{color:#eee}
+
+
+* {cursor:none}
+.outline {
+  width: 64px;
+  height: 64px;
+  mix-blend-mode: difference;
+  border-radius: 100%;
+  border: 1px solid #fff;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  position: fixed;
+  pointer-events: none;
+  left: 0px;
+  top: 0px;
+  z-index: 999999;
+  transform: translate( -64px, -64px );
+  border: 1px solid #fff;
+}
+
+.cursor {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background: #fff;
+  opacity: .8;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate( 50vw, -100px );
+}
+
+.outline.hover{    
+    width: 128px;
+    height: 128px;
+    background-color: #ff375f;
+    border-color: #ff375f;
+}
+.outline.hover::after{
+  content: '';
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://alien.haldenvgs.net/images/cursor.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cursor.hover{
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+
+  .cursor,
+  .outline{display: none;}
+
+}
+  
+  
+  </style>
+
+</head>
+<body>
+
+  <div class="cursor"></div>
+  <div class="outline"></div>
+
+
+  <h1 cursor-class="arrow"><a href="#">Hey, Ciao Mondo!</a></h1>
+
+  <p>Lorem, ipsum dolor sit amet consectetur <a href="#">Lorem</a> adipisicing elit. Eveniet, quisquam, sunt odit quidem blanditiis nostrum corporis iure reiciendis quo illo quia! Officia voluptas esse, eaque est expedita odit suscipit quam?</p>
+
+   <script> /* js code */ 
+  
+
+/*  -----------------------------------------------------------------------------------------------
+  cusrom custom
+--------------------------------------------------------------------------------------------------- */
+
+let outline = document.querySelector('.outline');
+let cursor = document.querySelector('.cursor');
+let a = document.querySelectorAll('a');
+
+
+document.addEventListener('mousemove', function(e){
+  let x = e.clientX;
+  let y = e.clientY;
+  outline.style.transform = `translate( calc(${x}px - 50%), calc(${y}px - 50%) )`;
+  cursor.style.transform = `translate( calc(${x}px - 50%) , calc(${y}px - 50%) )`;
+});
+
+
+a.forEach((item) => {
+  item.addEventListener('mouseover', () => {
+    outline.classList.add('hover');
+    cursor.classList.add('hover');
+  });
+  item.addEventListener('mouseleave', () => {
+    outline.classList.remove('hover');
+    cursor.classList.remove('hover');
+
+  });
+});
+
+  
+  </script>
+
+</body>
+</html>
