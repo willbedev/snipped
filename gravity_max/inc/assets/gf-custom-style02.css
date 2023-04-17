@@ -7,12 +7,14 @@
     --label-color: #707070;
     --label-error-color: #009ee2;
     --label-required-color: #707070;
+    --label-background-color: transparent;
 
     --label-focused: #00aab1;
     --label-focused-background-color: #fff;
 
     --input-text-color: #707070;
     --input-border-color: #707070;
+    --input-background-color: transparent;
 
     --input-file-upload-color: #00aab1;
 
@@ -21,9 +23,11 @@
 
     --gfield-error-input-color: #c02b0a;
 
-    --gfield-choice-checkbox: #707070;
-    --gfield-choice-checkbox-label: #707070;
-    --gfield-choice-checkbox-label-link: #707070;
+    --input-choise-checkbox: #707070;
+    --input-choise-checkbox-label: #707070;
+    --input-choise-checkbox-label-link: #707070;
+    --input-chiose-checkbox-border: #009ee1;
+    --input-chiose-checkbox-background: transparent;
 
     --step-number-color: #585e6a;
     --step-number-active-color: #0066CC;
@@ -100,18 +104,49 @@ form[id^='gform'] .gfield_error label, form[id^='gform'] .gfield_error .gfield_r
 
 /* checkbox / radio button */
 form[id^='gform'] .gfield_checkbox label {
-    color: var(--gfield-choice-checkbox-label);
+    color: var(--input-choise-checkbox-label);
 }
 form[id^='gform'] .gfield_checkbox label a {
-    color: var(--gfield-choice-checkbox-label-link);
+    color: var(--input-choise-checkbox-label-link);
 }
 form[id^='gform'] input.gfield-choice-input {
-	border: 2px solid var(--gfield-choice-checkbox);
+	border: 2px solid var(--input-choise-checkbox);
 }
 form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:before {
-	background-color: var(--gfield-choice-checkbox);
+	background-color: var(--input-choise-checkbox);
 }
-
+/* override checkbox - se si vuole personalizzare lo sfondo di una checkbox decommentare di seguito */
+/*
+form[id^='gform'] input[type=checkbox]:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0;
+    border: 1px solid var(--input-chiose-checkbox-border);
+    border-radius: 3px;
+    padding: 1px;
+    background-color: var(--input-chiose-checkbox-background);
+}
+form[id^='gform'] input[type=checkbox]:checked:before {
+    background-color: var(--input-chiose-checkbox-background);
+}
+form[id^='gform'] input[type=checkbox]:checked:after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 10px;
+    border: solid var(--input-chiose-checkbox-border);
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 2px;
+    left: 6px;
+}
+/* end override checkbox */
 
 /* Trasforma il pulsante input file upload input[type="file"] */
 
