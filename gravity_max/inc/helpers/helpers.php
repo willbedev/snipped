@@ -40,5 +40,7 @@ add_filter( 'gform_field_css_class', 'custom_class', 10, 3 );
  */
 function add_paragraph_below_submit( $button, $form ) {
 	return "<p class='required-text'>* campi obbligatori</p>" . $button;
+	// se si vuole l'icona all'interno del btn submit, commentare la riga sopra e decommentare questa.
+	// return "<p class='required-text' style='width: 100%;'>* campi obbligatori</p>" . "<div style='width: 100%; text-align: end;'>" . $button . "</div>";
 }
 add_filter( 'gform_submit_button', 'add_paragraph_below_submit', 10, 2 );

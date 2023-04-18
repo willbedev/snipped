@@ -37,9 +37,33 @@ jQuery( document ).ready( function( $ ) {
 						$(element).parent().siblings( 'label' ).addClass( 'focused' );
 					}
 				}
-			})
+			});
+			$(".gform_wrapper .gfield_required").html("*");
 		}
 	};
+
+	// aggiunge la classe focused alle label dopo aver cliccato sul pulsante submit e compaiono degli errori.
+	$( 'body' ).on( 'click', 'input[id^=gform_submit_button_]', function() {
+		const myFunction = () => {
+			if ( 'validation error', $( '.gform_validation_errors' ).length ) {
+				$( 'form input, form textarea, form select' ).each( function( key, element ) {
+					if ( typeof $( element ).val() === 'string' ) {
+						if ( $(element).val().length !== 0 ) {
+							$(element).parent().siblings( 'label' ).addClass( 'focused' );
+						}
+					}
+					if ( $( element )[0].getAttribute( "aria-describedby" ) !== null ) {
+						var attributesAriaDescribedby = $( element )[0].getAttribute( "aria-describedby" ).toString();
+						if ( attributesAriaDescribedby.match("^validation_message") ) {
+							$(element).parent().siblings( 'label' ).addClass( 'focused' );
+							$(element).parent().siblings( 'label' ).css( 'color', '#c02b0a' );
+						}
+					}
+				});
+			}
+		};
+		setTimeout( myFunction, 1000 );
+	});
 
 	// Create an observer instance linked to the callback function
 	const observer = new MutationObserver( callback );

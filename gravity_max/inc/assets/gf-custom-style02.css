@@ -78,6 +78,13 @@ form[id^='gform'] .gfield_error label, form[id^='gform'] .gfield_error .gfield_r
 .gform_wrapper.gravity-theme form[id^='gform'] .gfield_error [aria-invalid=true] {
     border: none;
 }
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error select[aria-invalid=true],
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error textarea[aria-invalid=true] {
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid var(--input-border-color);
+    border-left: none;
+}
 /* end input */
 
 /* step */
@@ -197,6 +204,10 @@ form[id^='gform'] ::file-upload-button{
 /* END: pulsante input file upload input[type="file"] */
 
 /* gform footer (submit container) */
+/*.gform_wrapper.gravity-theme form[id^='gform'] .ginput_container.ginput_container_consent label {
+    padding-left: 10px;
+}*/
+
 .gform_wrapper.gravity-theme form[id^='gform'] .gform_footer .required-text ,
 .gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer .required-text {
 	color: var(--required-text-footer-color);
@@ -205,5 +216,19 @@ form[id^='gform'] ::file-upload-button{
 .gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer input[type='submit']{
 	background-color: var(--input-submit-background-color);
     color: var(--white-color);
+}
+form[id^='gform'] .gform_footer input[type='submit'] {
+    background: url('/wp-content/themes/blocksy-child/gravity/inc/images/arrow-right.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+    padding-right: 55px;
+}
+/* se si vuole l'icona all'interno del pulsante submit, decommentare di seguito */
+/*
+form[id^='gform'] .gform_footer input[type='submit'] {
+    background: url('/wp-content/themes/blocksy-child/gravity/inc/images/arrow-right.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+    padding-right: 55px;
 }
 /* end gform footer (submit container) */

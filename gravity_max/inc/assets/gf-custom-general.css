@@ -12,7 +12,8 @@ form[id^='gform'] .gfield_label.gform-field-label {
 	text-transform: none;
     letter-spacing: .025em;
 }
-form[id^='gform'] .gfield label.gfield_label.focused {
+form[id^='gform'] .gfield label.gfield_label.focused ,
+form[id^='gform'] .gfield.gfield_error label.gfield_label.focused {
 	font-size: 12px;
 	top: 0;
 }
