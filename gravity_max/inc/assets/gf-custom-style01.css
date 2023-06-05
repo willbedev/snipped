@@ -226,3 +226,8 @@ form[id^='gform'] .gform_footer input[type='submit'] {
 */
 
 /* end gform footer (submit container) */
+
+/* error, validation container sopra form */
+/*.gform_wrapper.gravity-theme .gform_validation_errors {
+    margin-bottom: 20px !important;
+}*/
