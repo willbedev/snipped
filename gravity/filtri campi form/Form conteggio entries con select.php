@@ -1,7 +1,7 @@
 /* Form con trollollo inscrizioni del 6-7 dic */
 /* ----------- */
 /* ----------- */
-
+<?
 add_filter( 'gform_field_choice_markup_pre_render_4_18', 'stampa_numero_entries_dentro_field', 10, 4 );
 function stampa_numero_entries_dentro_field($choice_markup, $choice, $field, $value ){
  
