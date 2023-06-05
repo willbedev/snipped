@@ -15,8 +15,21 @@ body {
     top: 0; left:0;
     z-index: 999999;
     mix-blend-mode: difference;
+    
     transform: translate(-64px, -64px);
-    transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+	-webkit-transform: translate(-64px, -64px); /* compatibilità safari */
+	-moz-transform: translate(-64px, -64px);
+	-o-transform: translate(-64px, -64px);
+	-ms-transform: translate(-64px, -64px);
+
+	transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+	-webkit-transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+    -moz-transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+     -o-transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+    -ms-transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+
+
     pointer-events: none; /* necessario per vedere la transition */
 }
 
