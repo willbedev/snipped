@@ -19,24 +19,51 @@
     --input-file-upload-color: #00aab1;
 
     --input-submit-text-color: #009ee1;
+    --input-submit-previus-text-color:#009ee1; 
+    --input-submit-previus-border-color: #009ee1;
     --input-submit-background-color: #009ee1;
 
     --gfield-error-input-color: #c02b0a;
 
-    --input-chiose-checkbox: #009ee1;
-    --input-chiose-checkbox-label: #009ee1;
-    --input-chiose-checkbox-label-link: #009ee1;
-    --input-chiose-checkbox-border: #009ee1;
-    --input-chiose-checkbox-background: transparent;
+    --input-choice-checkbox: #009ee1;
+    --input-choice-checkbox-leggend: #009ee1;
+    --input-choice-checkbox-label: #009ee1;
+    --input-choice-checkbox-label-link: #009ee1;
+    --input-choice-checkbox-border: #009ee1;
+    --input-choice-checkbox-border-selected: #009ee1;
+    --input-choice-checkbox-border-override: transparent;
+    --input-choice-checkbox-background: transparent;
+
+    --input-choice-radio-background: #FFFFFF;
+    --input-choice-radio-center-background: #009ee1;
+    --input-choice-radio-border-color-checked: #009ee1;
 
     --step-number-color: #585e6a;
+    --step-number-background-color: #D6DEDE;
     --step-number-active-color: #0066CC;
+    --step-number-active-background-color: #0066CC;
     --step-number-complete-color: #0066CC;
 
     --step-label-color: #5B6F82;
     --step-label-active-complete-color: #0066CC;
 
-    --required-text-footer-color: #009ee1;
+    --required-text-footer-color: #009ee1;   
+}
+
+/* tabs moduli */
+.moduli .kt-tabs-title-list li.kt-tab-title-inactive a {
+    border-radius: 0;
+}
+.moduli .kt-tabs-wrap .kt-title-item.kt-tab-title-inactive {
+    margin-top: 8px!important;
+}
+/* element next to active */
+.moduli .kt-title-item.kt-title-item-1.kt-tab-title-active + .kt-title-item.kt-title-item-2.kt-tab-title-inactive > a{
+    border-top-left-radius: 0px !important;
+}
+/* element before active */
+.moduli .kt-title-item.kt-title-item-1.kt-tab-title-inactive > a {
+    border-top-right-radius: 0px !important;
 }
 
 /* title */
@@ -60,13 +87,20 @@ form[id^='gform'] .gfield_error label, form[id^='gform'] .gfield_error .gfield_r
 }
 /* end label */
 
+/* datapicker */
+.gform_wrapper.gravity-theme form[id^='gform'] .datepicker.gform-datepicker {
+    width: 100%;
+}
+
 /* input */
-.gform_wrapper.gravity-theme form[id^='gform'] input:not([type='file']):not([type='checkbox']):not([type='submit']),
-.gform_wrapper.gravity-theme form[id^='gform'] textarea {
+.gform_wrapper.gravity-theme form[id^='gform'] input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='button']),
+.gform_wrapper.gravity-theme form[id^='gform'] textarea, .gform_wrapper.gravity-theme form[id^='gform'] select {
     border-top: none;
     border-right: none;
     border-bottom: 2px solid var(--input-border-color);
     border-left: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     height: 60px;
     padding: 20px 15px 5px 0;
     transition: all .2s ease;
@@ -85,18 +119,23 @@ form[id^='gform'] .gfield_error label, form[id^='gform'] .gfield_error .gfield_r
     border-bottom: 2px solid var(--input-border-color);
     border-left: none;
 }
+
+.gform_wrapper.gravity-theme form[id^='gform'] .field_required {
+    display: flex;
+    justify-content: end;
+}
 /* end input */
 
 /* step */
 .gform_wrapper.gravity-theme form[id^='gform'] .gf_step_active .gf_step_number {
-	background-color: var(--step-number-active-color);
-	color: var(--white-color);
+	background-color: var(--step-number-active-background-color);
+	color: var(--step-number-active-color);
 }
 .gform_wrapper.gravity-theme .gf_step_label {
 	color: var(--step-label-color);
 }
 .gform_wrapper.gravity-theme form[id^='gform'] .gf_step_number {
-	background: var(--white-color);
+	background: var(--step-number-background-color);
 	color: var(--step-number-color);
 }
 .gform_wrapper.gravity-theme form[id^='gform'] .gf_step_completed .gf_step_number {
@@ -109,18 +148,36 @@ form[id^='gform'] .gfield_error label, form[id^='gform'] .gfield_error .gfield_r
 }
 /* end steps */
 
-/* checkbox / radio button */
+/* checkbox  */
+form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:before {
+    height: 12px;
+}
+
+form[id^='gform'] .gfield.gfield--type-checkbox {
+    top: 30px;
+}
+form[id^='gform'] .gfield.gfield--type-checkbox > legend {
+    position: relative;
+    top: 10px;
+    font-weight: bold;
+    color: var(--input-choice-checkbox-leggend);
+}
 form[id^='gform'] .gfield_checkbox label {
-    color: var(--input-chiose-checkbox-label);
+    color: var(--input-choice-checkbox-label);
 }
 form[id^='gform'] .gfield_checkbox label a {
-    color: var(--input-chiose-checkbox-label-link);
+    color: var(--input-choice-checkbox-label-link);
 }
 form[id^='gform'] input.gfield-choice-input {
-	border: 2px solid var(--input-chiose-checkbox-border);
+	border: 2px solid var(--input-choice-checkbox-border);
+    border-radius: 0;
+}
+form[id^='gform'] .gfield-choice-input[type=checkbox]:checked{
+    border: 2px solid var(--input-choice-checkbox-border-selected);
 }
 form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:before {
-	background-color: var(--input-chiose-checkbox-background);
+	background-color: var(--input-choice-checkbox-background);
+    border-radius: 0;
 }
 /* override checkbox - se si vuole personalizzare lo sfondo di una checkbox decommentare di seguito */
 /*
@@ -131,20 +188,20 @@ form[id^='gform'] input[type=checkbox]:before {
     height: 16px;
     top: 0;
     left: 0;
-    border: 1px solid var(--input-chiose-checkbox-border);
-    border-radius: 3px;
+    border: 1px solid var(--input-choice-checkbox-border-override);
+    /*border-radius: 3px;*
     padding: 1px;
-    background-color: var(--input-chiose-checkbox-background);
+    background-color: var(--input-choice-checkbox-background);
 }
 form[id^='gform'] input[type=checkbox]:checked:before {
-    background-color: var(--input-chiose-checkbox-background);
+    background-color: var(--input-choice-checkbox-background);
 }
 form[id^='gform'] input[type=checkbox]:checked:after {
     content: "";
     display: block;
     width: 5px;
     height: 10px;
-    border: solid var(--input-chiose-checkbox-border);
+    border: solid var(--input-choice-checkbox-border);
     border-width: 0 2px 2px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -153,7 +210,31 @@ form[id^='gform'] input[type=checkbox]:checked:after {
     top: 2px;
     left: 6px;
 }
+
+/* checkbox type radio */
+form[id^='gform'] input[type=radio] {
+    border-radius: 50%;
+}
+form[id^='gform'] input[type=radio]:before {
+	width: 13px;
+    height: 12px;
+    background-color: var(--input-choice-radio-center-background);
+}
+form[id^='gform'] input[type=radio]:checked {
+    background-color: var(--input-choice-radio-background);
+    border-color: var(--input-choice-radio-border-color-checked);
+}
+form[id^='gform'] .gfield-choice-input[type=radio]:checked:before {
+	width: 13px;
+    height: 12px;
+    background-color: var(--input-choice-radio-center-background);
+}
 /* end override checkbox */
+
+/* textarea */
+form[id^='gform'] .gfield.gfield--type-textarea {
+    top: 40px;
+}
 
 /* Trasforma il pulsante input file upload input[type="file"] */
 
@@ -200,21 +281,69 @@ form[id^='gform'] ::file-upload-button{
 }
 /* END: pulsante input file upload input[type="file"] */
 
+/* consent */
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-consent {
+    top: 40px;
+    z-index: 1;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-consent > div:first-child {
+    height: 60px;
+}
+
 /* gform footer (submit container) */
-/*.gform_wrapper.gravity-theme form[id^='gform'] .ginput_container.ginput_container_consent label {
-    padding-left: 10px;
-}*/
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_footer,
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer {
+    flex-direction: column;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_footer {
+    margin-top: 30px;
+}
 
 .gform_wrapper.gravity-theme form[id^='gform'] .gform_footer .required-text ,
 .gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer .required-text {
 	color: var(--required-text-footer-color);
+    text-align: right;
 }
 .gform_wrapper.gravity-theme form[id^='gform'] .gform_footer input[type='submit'],
-.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer input[type='submit']{
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer input[type='submit'],
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer .gform_previous_button,
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer .gform_next_button {
 	background-color: var(--input-submit-background-color);
-    color: var(--white-color);
+    color: var(--input-submit-text-color);
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 40px;
+    border-radius: 10px;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] div[id^='gform_page_2']:first-child .gform_page_footer .gform_next_button{
+    width: 100%;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] div[id^='gform_page_2'] .gform_page_footer {
+    display: flex;
+    flex-direction: row;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] div[id^='gform_page_2'] .gform_page_footer .gform_previous_button {
+    background-color: transparent;
+    border: 2px solid var(--input-submit-previus-border-color);
+    color: var(--input-submit-previus-text-color) !important;
+    border-bottom: 2px solid !important;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] div[id^='gform_page_2']:last-child .gform_page_footer{
+    margin-top: 40px;
 }
 
+/* form step 'continua' button */
+.gform_wrapper.gravity-theme .gform_page_footer {
+    grid-template-columns: 1fr !important;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer input[type='button'] {
+    color: var(--white-color) !important;
+    border-bottom: none !important;
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
 /* se si vuole l'icona all'interno del pulsante submit, decommentare di seguito */
 /*
 form[id^='gform'] .gform_footer input[type='submit'] {
@@ -224,7 +353,6 @@ form[id^='gform'] .gform_footer input[type='submit'] {
     padding-right: 55px;
 }
 */
-
 /* end gform footer (submit container) */
 
 /* error, validation container sopra form */
