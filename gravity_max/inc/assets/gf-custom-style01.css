@@ -1,70 +1,78 @@
 :root {
 	--white-color: #fff;
-	--nobackground-border-text-color: #009ee1;
+	--nobackground-border-text-color: #818E8D;
+    --robins-egg-blue: #00d6c7;
+    --pattens-blue: #d2e5ef;
+    --strong-red: #c02b0a;
 
-    --title-color: #009ee1;
+    --title-color: #00d6c7;
 
-    --label-color: #009ee1;
-    --label-error-color: #009ee2;
-    --label-required-color: #009ee1;
+    --label-color: #00d6c7;
+    --label-color-focused: #00d6c7;
+    --label-error-color: #c02b0a;
+    --label-required-color: #00d6c7;
     --label-background-color: transparent;
 
     --label-focused: #00aab1;
     --label-focused-background-color: #fff;
 
-    --input-text-color: #009ee1;
-    --input-border-color: #009ee1;
+    --input-text-color: #00ACA0;
+    --input-border-color: #00ACA0;
     --input-background-color: transparent;
 
     --input-file-upload-color: #00aab1;
 
-    --input-submit-text-color: #009ee1;
-    --input-submit-previus-text-color:#009ee1; 
-    --input-submit-previus-border-color: #009ee1;
-    --input-submit-background-color: #009ee1;
+    --input-submit-text-color: #FFFFFF;
+    --input-submit-previus-text-color:#00d6c7; 
+    --input-submit-previus-border-color: #00d6c7;
+    --input-submit-background-color: #00d6c7;
 
     --gfield-error-input-color: #c02b0a;
 
-    --input-choice-checkbox: #009ee1;
-    --input-choice-checkbox-leggend: #009ee1;
-    --input-choice-checkbox-label: #009ee1;
-    --input-choice-checkbox-label-link: #009ee1;
-    --input-choice-checkbox-border: #009ee1;
-    --input-choice-checkbox-border-selected: #009ee1;
+    --input-choice-checkbox: #00d6c7;
+    --input-choice-checkbox-leggend: #00d6c7;
+    --input-choice-checkbox-label: #00d6c7;
+    --input-choice-checkbox-label-link: #00d6c7;
+    --input-choice-checkbox-border: #00d6c7;
+    --input-choice-checkbox-border-selected: #00d6c7; 
     --input-choice-checkbox-border-override: transparent;
-    --input-choice-checkbox-background: transparent;
+    --input-choice-checkbox-border-error: #c02b0a;
+    --input-choice-checkbox-background: #00d6c7;
+    --input-choice-checkbox-background-error: #c02b0a;
 
     --input-choice-radio-background: #FFFFFF;
-    --input-choice-radio-center-background: #009ee1;
-    --input-choice-radio-border-color-checked: #009ee1;
+    --input-choice-radio-center-background: #00d6c7;
+    --input-choice-radio-border-color-checked: #00d6c7;
 
-    --step-number-color: #585e6a;
+    --step-number-color: #FFFFFF;
     --step-number-background-color: #D6DEDE;
-    --step-number-active-color: #0066CC;
-    --step-number-active-background-color: #0066CC;
-    --step-number-complete-color: #0066CC;
+    --step-number-active-color: #FFFFFF;
+    --step-number-active-background-color: #00d6c7;
+    --step-number-complete-color: #00d6c7;
 
-    --step-label-color: #5B6F82;
-    --step-label-active-complete-color: #0066CC;
+    --step-label-color: #00d6c7;
+    --step-label-active-complete-color: #00d6c7;
 
-    --required-text-footer-color: #009ee1;   
+    --required-text-footer-color: #00d6c7;
 }
 
-/* tabs moduli */
+/*
+/* tabs moduli *
 .moduli .kt-tabs-title-list li.kt-tab-title-inactive a {
     border-radius: 0;
 }
 .moduli .kt-tabs-wrap .kt-title-item.kt-tab-title-inactive {
     margin-top: 8px!important;
 }
-/* element next to active */
+/* element next to active *
 .moduli .kt-title-item.kt-title-item-1.kt-tab-title-active + .kt-title-item.kt-title-item-2.kt-tab-title-inactive > a{
     border-top-left-radius: 0px !important;
 }
-/* element before active */
+/* element before active *
 .moduli .kt-title-item.kt-title-item-1.kt-tab-title-inactive > a {
     border-top-right-radius: 0px !important;
 }
+*/
 
 /* title */
 .gform_heading .gform_title {
@@ -72,59 +80,20 @@
 }
 /* end title */
 
-/* label */
-form[id^='gform'] .gfield_label.gform-field-label {
-	color: var(--label-color);
+/* progress bar */
+.gform_wrapper.gravity-theme form[id^='gform'] p.gf_progressbar_title {
+    color: var(--robins-egg-blue);
 }
-form[id^='gform'] .gfield label.gfield_label.focused {
-    color: var(--label-color-focused);
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_progressbar {
+    background: var(--pattens-blue);
 }
-form[id^='gform'] .gfield_error label, form[id^='gform'] .gfield_error .gfield_required {
-    color: var(--label-error-color);
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_progressbar_percentage.percentbar_green {
+    background-color: var(--robins-egg-blue);
 }
-.gform_wrapper.gravity-theme form[id^='gform'] .gfield_required {
-    color: var(--label-required-color);
+.gform_wrapper.gravity-theme .gf_progressbar_percentage.percentbar_green.percentbar_100 {
+    background-color: var(--robins-egg-blue);
 }
-/* end label */
-
-/* datapicker */
-.gform_wrapper.gravity-theme form[id^='gform'] .datepicker.gform-datepicker {
-    width: 100%;
-}
-
-/* input */
-.gform_wrapper.gravity-theme form[id^='gform'] input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='button']),
-.gform_wrapper.gravity-theme form[id^='gform'] textarea, .gform_wrapper.gravity-theme form[id^='gform'] select {
-    border-top: none;
-    border-right: none;
-    border-bottom: 2px solid var(--input-border-color);
-    border-left: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    height: 60px;
-    padding: 20px 15px 5px 0;
-    transition: all .2s ease;
-    letter-spacing: .025em;
-    color: var(--input-text-color);
-    font-size: 20px;
-    font-weight: 400;
-}
-.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error [aria-invalid=true] {
-    border: none;
-}
-.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error select[aria-invalid=true],
-.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error textarea[aria-invalid=true] {
-    border-top: none;
-    border-right: none;
-    border-bottom: 2px solid var(--input-border-color);
-    border-left: none;
-}
-
-.gform_wrapper.gravity-theme form[id^='gform'] .field_required {
-    display: flex;
-    justify-content: end;
-}
-/* end input */
+/* END progress bar */
 
 /* step */
 .gform_wrapper.gravity-theme form[id^='gform'] .gf_step_active .gf_step_number {
@@ -148,161 +117,199 @@ form[id^='gform'] .gfield_error label, form[id^='gform'] .gfield_error .gfield_r
 }
 /* end steps */
 
-/* checkbox  */
-form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:before {
-    height: 12px;
+/* label */
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_label.gform-field-label {
+	color: var(--label-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield label.gfield_label.focused {
+    color: var(--label-color-focused);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-date .gfield_label.focused {
+    color: var(--label-color-focused);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_required {
+    color: var(--label-required-color);
 }
 
-form[id^='gform'] .gfield.gfield--type-checkbox {
-    top: 30px;
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error .gfield_label.gform-field-label {
+    color: var(--label-error-color);
 }
-form[id^='gform'] .gfield.gfield--type-checkbox > legend {
-    position: relative;
-    top: 10px;
-    font-weight: bold;
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-date.gfield_error .gfield_label.focused {
+    color: var(--label-error-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error .gfield_required {
+    color: var(--label-error-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error .gfield_checkbox label {
+    color: var(--label-error-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error .gfield_checkbox label > a {
+    color: var(--label-error-color);
+}
+/* end label */
+
+
+/* input */
+.gform_wrapper.gravity-theme form[id^='gform'] input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='button']),
+.gform_wrapper.gravity-theme form[id^='gform'] textarea,
+.gform_wrapper.gravity-theme form[id^='gform'] select {
+    border-bottom-color: 2px solid var(--input-border-color);
+    color: var(--input-text-color);
+}
+
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='button']),
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error textarea,
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error select {
+    color: var(--gfield-error-input-color);
+}
+
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error select[aria-invalid=true],
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error textarea[aria-invalid=true] {
+    border-bottom-color: 2px solid var(--input-border-color);
+}
+/* end input */
+
+/* checkbox  */
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-checkbox > legend {
     color: var(--input-choice-checkbox-leggend);
 }
-form[id^='gform'] .gfield_checkbox label {
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_checkbox label {
     color: var(--input-choice-checkbox-label);
 }
-form[id^='gform'] .gfield_checkbox label a {
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_checkbox label a {
     color: var(--input-choice-checkbox-label-link);
 }
-form[id^='gform'] input.gfield-choice-input {
+.gform_wrapper.gravity-theme form[id^='gform'] input.gfield-choice-input {
 	border: 2px solid var(--input-choice-checkbox-border);
-    border-radius: 0;
 }
-form[id^='gform'] .gfield-choice-input[type=checkbox]:checked{
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield-choice-input[type=checkbox]:checked{
     border: 2px solid var(--input-choice-checkbox-border-selected);
 }
-form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:before {
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:before {
 	background-color: var(--input-choice-checkbox-background);
     border-radius: 0;
 }
+
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error .gfield-choice-input[type=checkbox]:checked {
+    border: 2px solid var(--input-choice-checkbox-border-error);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error .gfield-choice-input[type=checkbox]:checked:before {
+    background-color: var(--input-choice-checkbox-background-error);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error input.gfield-choice-input {
+    border: 2px solid var(--input-choice-checkbox-border-error);
+}
+
 /* override checkbox - se si vuole personalizzare lo sfondo di una checkbox decommentare di seguito */
-/*
-form[id^='gform'] input[type=checkbox]:before {
-    content: "";
-    position: absolute;
-    width: 16px;
-    height: 16px;
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:before {
+    width: 14px;
+    height: 14px;
     top: 0;
     left: 0;
-    border: 1px solid var(--input-choice-checkbox-border-override);
-    /*border-radius: 3px;*
-    padding: 1px;
-    background-color: var(--input-choice-checkbox-background);
 }
-form[id^='gform'] input[type=checkbox]:checked:before {
-    background-color: var(--input-choice-checkbox-background);
-}
-form[id^='gform'] input[type=checkbox]:checked:after {
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:after {
     content: "";
     display: block;
     width: 5px;
     height: 10px;
-    border: solid var(--input-choice-checkbox-border);
+    border: solid var(--white-color);
     border-width: 0 2px 2px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
     position: absolute;
-    top: 2px;
-    left: 6px;
+    top: 1px;
+    left: 5px;
 }
 
 /* checkbox type radio */
-form[id^='gform'] input[type=radio] {
-    border-radius: 50%;
-}
-form[id^='gform'] input[type=radio]:before {
-	width: 13px;
-    height: 12px;
+.gform_wrapper.gravity-theme form[id^='gform'] input[type=radio]:before {
     background-color: var(--input-choice-radio-center-background);
 }
-form[id^='gform'] input[type=radio]:checked {
+.gform_wrapper.gravity-theme form[id^='gform'] input[type=radio]:checked {
     background-color: var(--input-choice-radio-background);
     border-color: var(--input-choice-radio-border-color-checked);
 }
-form[id^='gform'] .gfield-choice-input[type=radio]:checked:before {
-	width: 13px;
-    height: 12px;
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield-choice-input[type=radio]:checked:before {
     background-color: var(--input-choice-radio-center-background);
 }
 /* end override checkbox */
 
-/* textarea */
-form[id^='gform'] .gfield.gfield--type-textarea {
-    top: 40px;
-}
 
 /* Trasforma il pulsante input file upload input[type="file"] */
-
 /* Chrome, Safari */
 /*#gform_8 ::-webkit-file-upload-button {*/
-form[id^='gform'] ::-webkit-file-upload-button {
-    background: var(--white-color);
-    border: 2px solid var(--nobackground-border-text-color);
-    border-radius: 4px;
-    color: var(--nobackground-border-text-color);
-    font-weight: 600;
-    padding: 10px 15px;
-    width: 200px;
-    line-height: 1.3em;
-    letter-spacing: .025em;
-    text-transform: uppercase;
+.gform_wrapper.gravity-theme form[id^='gform'] input[type="file"]::-webkit-file-upload-button {
+    background: var(--robins-egg-blue);
+    border-color: var(--robins-egg-blue);
+    color: var(--white-color);
 }
 /*input[type="file"]::file-selector-button {*/
-form[id^='gform'] input[type="file"]::file-selector-button {
-    background: var(--white-color);
-    border: 2px solid var(--nobackground-border-text-color);
-    border-radius: 4px;
-    color: var(--nobackground-border-text-color);
-    font-weight: 600;
-    padding: 10px 10px;
-    width: 200px;
-    line-height: 1.3em;
-    letter-spacing: .025em;
-    text-transform: uppercase;
+.gform_wrapper.gravity-theme form[id^='gform'] input[type="file"]::file-selector-button {
+    background: var(--robins-egg-blue);
+    border-color: var(--robins-egg-blue);
+    color: var(--white-color);
 }
 /* Edge */
 /*#gform_8 ::file-upload-button{*/
-form[id^='gform'] ::file-upload-button{
-    background: var(--white-color);
-    border: 2px solid var(--nobackground-border-text-color);
-    border-radius: 4px;
-    color: var(--nobackground-border-text-color);
-    font-weight: 600;
-    padding: 10px 10px;
-    width: 200px;
-    line-height: 1.3em;
-    letter-spacing: .025em;
-    text-transform: uppercase;
+.gform_wrapper.gravity-theme form[id^='gform'] input[type="file"]::file-upload-button{
+    background: var(--robins-egg-blue);
+    border-color: var(--robins-egg-blue);
+    color: var(--white-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-fileupload i.fa.fa-upload {
+	color: var(--white-color);
+}
+
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-fileupload .gform_delete_file {
+    background-color: var(--robins-egg-blue);
+    color: var(--white-color);
+}
+
+/* error */
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-fileupload.gfield_error label.gfield_label.focused {
+    color: var(--strong-red);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-fileupload.gfield_error .gfield_description {
+    color: var(--strong-red);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-fileupload.gfield_error .gfield_fileupload_filename {
+    color: var(--strong-red);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-fileupload.gfield_error .gform_delete_file {
+    background-color: var(--strong-red);
+    color: var(--white-color);
+}
+
+/* Chrome, Safari */
+/*#gform_8 ::-webkit-file-upload-button {*/
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error input[type="file"]::-webkit-file-upload-button {
+    background: var(--strong-red);
+    border-color: var(--strong-red);
+    color: var(--white-color);
+}
+/*input[type="file"]::file-selector-button {*/
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error input[type="file"]::file-selector-button {
+    background: var(--strong-red);
+    border-color: var(--strong-red);
+    color: var(--white-color);
+}
+/* Edge */
+/*#gform_8 ::file-upload-button{*/
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error input[type="file"]::file-upload-button{
+    background: var(--strong-red);
+    border-color: var(--strong-red);
+    color: var(--white-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error .gfield.gfield--type-fileupload i.fa.fa-upload {
+    color: var(--white-color);
 }
 /* END: pulsante input file upload input[type="file"] */
 
-/* consent */
-.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-consent {
-    top: 40px;
-    z-index: 1;
-}
-.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-consent > div:first-child {
-    height: 60px;
-}
-
 /* gform footer (submit container) */
-.gform_wrapper.gravity-theme form[id^='gform'] .gform_footer,
-.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer {
-    flex-direction: column;
-}
-.gform_wrapper.gravity-theme form[id^='gform'] .gform_footer {
-    margin-top: 30px;
-}
-
 .gform_wrapper.gravity-theme form[id^='gform'] .gform_footer .required-text ,
 .gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer .required-text {
 	color: var(--required-text-footer-color);
-    text-align: right;
 }
 .gform_wrapper.gravity-theme form[id^='gform'] .gform_footer input[type='submit'],
 .gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer input[type='submit'],
@@ -310,40 +317,18 @@ form[id^='gform'] ::file-upload-button{
 .gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer .gform_next_button {
 	background-color: var(--input-submit-background-color);
     color: var(--input-submit-text-color);
-    width: 100%;
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: 10px 40px;
-    border-radius: 10px;
 }
-.gform_wrapper.gravity-theme form[id^='gform'] div[id^='gform_page_2']:first-child .gform_page_footer .gform_next_button{
-    width: 100%;
-}
-.gform_wrapper.gravity-theme form[id^='gform'] div[id^='gform_page_2'] .gform_page_footer {
-    display: flex;
-    flex-direction: row;
-}
-.gform_wrapper.gravity-theme form[id^='gform'] div[id^='gform_page_2'] .gform_page_footer .gform_previous_button {
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer .gform_previous_button {
     background-color: transparent;
-    border: 2px solid var(--input-submit-previus-border-color);
-    color: var(--input-submit-previus-text-color) !important;
-    border-bottom: 2px solid !important;
-}
-.gform_wrapper.gravity-theme form[id^='gform'] div[id^='gform_page_2']:last-child .gform_page_footer{
-    margin-top: 40px;
+    border: 2px solid var(--input-border-color);
+    color: var(--input-submit-previus-text-color);
 }
 
 /* form step 'continua' button */
 .gform_wrapper.gravity-theme .gform_page_footer {
     grid-template-columns: 1fr !important;
 }
-.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer input[type='button'] {
-    color: var(--white-color) !important;
-    border-bottom: none !important;
-    border-bottom-left-radius: 10px !important;
-    border-bottom-right-radius: 10px !important;
-}
+
 /* se si vuole l'icona all'interno del pulsante submit, decommentare di seguito */
 /*
 form[id^='gform'] .gform_footer input[type='submit'] {
@@ -359,3 +344,4 @@ form[id^='gform'] .gform_footer input[type='submit'] {
 /*.gform_wrapper.gravity-theme .gform_validation_errors {
     margin-bottom: 20px !important;
 }*/
+

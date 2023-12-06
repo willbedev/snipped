@@ -1,9 +1,12 @@
 jQuery( document ).ready( function( $ ) {
-
 	// inserisce la classe focused.
     $( document ).on( 'focus', 'form input, form textarea, form select', function () {
 		if ( ! $(this).parent().siblings('label').hasClass('focused') ) {
 			$(this).parent().siblings('label').addClass('focused');
+		}
+		// eg: email and confirm email
+		if ( ! $(this).parent().parent().siblings('legend').hasClass('focused') ) {
+			$(this).parent().parent().siblings('legend').addClass('focused');
 		}
 	});
 
@@ -36,17 +39,30 @@ jQuery( document ).ready( function( $ ) {
 					$(element).parent().siblings( 'label' ).addClass( 'focused' );
 				}
 			});
-			$( 'form .wrap input, form .wrap textarea, form .wrap select' ).each( function( key, element ) {
-				if ( typeof $( element ).val() === 'string' ) {
-					if ( $(element).val().length !== 0 ) {
-						$(element).parent().siblings( 'label' ).addClass( 'focused' );
-					} else {
-						if ( $(element).parent().siblings( 'label' ).hasClass( 'focused' ) ) {
-							$(element).parent().siblings( 'label' ).removeClass( 'focused' );
-						}
-					}
-				}
+			$( 'form fieldset.gfield--type-time > legend' ).each( function(key, element) {
+				$(element).addClass( 'focused' );
 			});
+
+			$( 'form input, form textarea, form select' ).each( function( key, element ) {
+				if ( $(element).val().length !== 0 ) {
+					if ( ! $(element).parent().siblings('label').hasClass('focused') ) {
+						$(element).parent().siblings('label').addClass('focused');
+					}
+					// eg: email and confirm email
+					if ( ! $(element).parent().parent().siblings('legend').hasClass('focused') ) {
+						$(element).parent().parent().siblings('legend').addClass('focused');
+					}
+				} /*else {
+					if ( $(element).parent().siblings('label').hasClass('focused') ) {
+						$(element).parent().siblings('label').removeClass('focused');
+					}
+					// eg: email and confirm email
+					if ( $(element).parent().parent().siblings('legend').hasClass('focused') ) {
+						$(element).parent().parent().siblings('legend').removeClass('focused');
+					}
+				}*/
+			});
+
 			$(".gform_wrapper .gfield_required").html("*");
 		}
 	};
@@ -54,10 +70,10 @@ jQuery( document ).ready( function( $ ) {
 	$( 'body' ).on( 'click', 'input[id^=gform_previous_button_], input[id^=gform_next_button_] ', function() {
 		const myFunction = () => {
 			$('input, textarea, select').each( function( key, element ) {
-				if ( ! $(element).parent().siblings('label').hasClass('focused') ) {
+				var input = jQuery(element);
+				if ( ! $(element).parent().siblings('label').hasClass('focused') && input.val().length !== 0) {
 					$(element).parent().siblings('label').addClass('focused');
 				} else {
-					var input = jQuery(element);
 					if ( input.val().length === 0 ) {
 						$(element).parent().siblings('label').removeClass('focused');
 					}
@@ -68,7 +84,7 @@ jQuery( document ).ready( function( $ ) {
 	});
 
 	// aggiunge la classe focused alle label dopo aver cliccato sul pulsante submit e compaiono degli errori.
-	$( 'body' ).on( 'click', 'input[id^=gform_submit_button_], input[id^=gform_next_button_] ', function() {
+	$( 'body' ).on( 'click', 'input[id^=gform_submit_button_]', function() {
 		const myFunction = () => {
 			if ( 'validation error', $( '.gform_validation_errors' ).length ) {
 				$( 'form input, form textarea, form select' ).each( function( key, element ) {
@@ -119,4 +135,135 @@ jQuery( document ).ready( function( $ ) {
 	//oserver
 
 	$( '.gform_wrapper .gfield_required' ).html( '*' );
+
+	$( '.gform_validation_error_link' ).on( 'click', function(e) {
+		e.preventDefault();
+	});
+
+	
+	$( "#edit-form .ginput_container_checkbox > .gfield_checkbox > .gchoice > input" ).on( "click", function() {
+		if ( $(this).is(':checked') ) {
+			$(this).attr('checked', 'checked');
+		} else {
+			$(this).removeAttr('checked');
+		}
+	});
+
+	$( "#edit-form .gfield_radio > .gchoice > input" ).on( "change", function() {
+		$( "#edit-form .gfield_radio > .gchoice > input" ).each( function( index ) {
+			$(this).prop('checked', false);
+		});
+		$(this).prop('checked', true);
+	});
+
+	var select_value = '';
+	$( "#edit-form .ginput_container.ginput_container_select" ).on( "change", function() {
+		$( this ).find('option').each( function( index ) {
+			if ( $(this).prop('selected') ) {
+				select_value = $(this).val();
+				$(this).attr( 'selected', 'selected' );
+			}
+			if ( $(this).val() !== select_value ) {
+				$(this).attr( 'selected', false );
+			}
+		});
+	});
+
+	$( "#edit-form .ginput_container.ginput_container_select > select" ).on( "change", function() {
+		if ( $(this).val() === 'No' ) {
+			$( "#edit-form > div:nth-child(5), #edit-form > div:nth-child(6)" ).css( 'display', 'none' );
+		} else {
+			$( "#edit-form > div:nth-child(5), #edit-form > div:nth-child(6)" ).css( 'display', '' );
+		}
+	});
+
+	$( "#edit-form .ginput_container.ginput_container_select > select" ).on( "change", function() {
+		if ( $(this).val() === 'No' ) {
+			$( "#edit-form > div:nth-child(5), #edit-form > div:nth-child(6)" ).css( 'display', 'none' );
+		} else {
+			$( "#edit-form > div:nth-child(5), #edit-form > div:nth-child(6)" ).css( 'display', '' );
+		}
+	});
+
+	$( "#edit-form .ginput_container.ginput_container_select > select > option" ).each(function() {
+		if ( $(this).prop('selected') && $(this).val() === 'No' ) {
+			$( "#edit-form > div:nth-child(5), #edit-form > div:nth-child(6)" ).css( 'display', 'none' );
+		}
+	});
+
+	// ajax edit form
+	$( '#edit-form-submit-modify' ).on( 'click', function(e){
+		e.preventDefault();
+
+		var data = $('input#results').data('results');
+
+		$.each( data, function(index, value){
+			if ( value[0].includes(".") ) {
+				var tmp = value[0].split('.');
+				value[0] = tmp[0] + '\\.' + tmp[1];
+			}
+			if ( typeof $( "#"+value[0] ).prop('type') === 'undefined' ) {
+				$( "#"+value[0] + ' input' ).each( function(index2, value2) {
+					if ( $(value2).is(':checked') ) {
+						data[index][1] = $(value2).val();
+					}
+				});
+			}
+			if ( $( "#"+value[0] ).prop('type') === 'checkbox' ) {
+				if ( ! $( "#"+value[0] ).is(':checked') ) {
+					data[index][1] = '';
+				} else {
+					data[index][1] = $( "#"+value[0] ).val();
+				}
+			}
+			if ( $( "#"+value[0] ).prop('type') === 'select-one' ) {
+				$( "#"+value[0] ).find( 'option' ).each( function(index2, value2) {
+					if ( $(this).is(':checked') ) {
+						data[index][1] = $(this).val();
+					}
+				});
+			}
+			if ( $( "#"+value[0] ).prop('type') === 'text' ) {
+				data[index][1] = $( "#"+value[0] ).val();
+			}
+			if ( $( "#"+value[0] ).prop('type') === 'textarea' ) {
+				data[index][1] = $( "#"+value[0] ).val();
+			}
+		});
+		
+		$('#63').find( 'option' ).each( function(index2, value2) {
+			if ( $(this).is(':checked') ) {
+				if ( $(this).val() === 'No' ) {
+					$('#64').val('').trigger('change'); // punto di ritrovo.
+					data[7][1] = '';
+					$('#65').text(''); // textarea
+					data[8][1] = '';
+				}
+			}
+		});
+
+		$.ajax({
+			type: 'POST',
+			url: ajax_edit_form.ajaxurl,
+			data: {
+				action : 'editform',
+				data: data,
+				//security : ajax_edit_form.security,
+			},
+			beforeSend:function(xhr){
+				//btnLoadMore.text('Caricando...'); // changing the button label
+			},
+			success: function( response ) {
+				if ( response.message === 'success' ) {
+					window.location = window.location.pathname + '?msg=ok';
+				}
+			},
+			error: function( errorThrown ) {
+				console.log( errorThrown );
+			},
+			complete: function(){
+				//btnLoadMore.text(btnLoadMoreTxt); // changing the button label
+			}
+		});
+	});
 });

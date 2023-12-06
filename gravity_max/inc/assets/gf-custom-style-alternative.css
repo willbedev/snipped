@@ -1,0 +1,395 @@
+:root {
+	--white-color: #fff;
+	--nobackground-border-text-color: #818E8D;
+
+    --title-color: #818E8D;
+
+    --label-color: #818E8D;
+    --label-error-color: #009ee2;
+    --label-required-color: #818E8D;
+    --label-background-color: transparent;
+
+    --label-focused: #00aab1;
+    --label-focused-background-color: #fff;
+
+    --input-text-color: #00ACA0;
+    --input-border-color: #818E8D;
+    --input-background-color: transparent;
+
+    --input-file-upload-color: #00aab1;
+
+    --input-submit-text-color: #FFFFFF;
+    --input-submit-previus-text-color:#00D6C7; 
+    --input-submit-previus-border-color: #00D6C7;
+    --input-submit-background-color: #00D6C7;
+
+    --gfield-error-input-color: #c02b0a;
+
+    --input-choice-checkbox: #00ACA0;
+    --input-choice-checkbox-leggend: #00ACA0;
+    --input-choice-checkbox-label: #818E8D;
+    --input-choice-checkbox-label-link: #818E8D;
+    --input-choice-checkbox-border: #818E8D;
+    --input-choice-checkbox-border-selected: #00ACA0; 
+    --input-choice-checkbox-border-override: transparent;
+    --input-choice-checkbox-background: #00ACA0;
+
+    --input-choice-radio-background: #FFFFFF;
+    --input-choice-radio-center-background: #00ACA0;
+    --input-choice-radio-border-color-checked: #00ACA0;
+
+    --step-number-color: #FFFFFF;
+    --step-number-background-color: #D6DEDE;
+    --step-number-active-color: #FFFFFF;
+    --step-number-active-background-color: #818E8D;
+    --step-number-complete-color: #818E8D;
+
+    --step-label-color: #818E8D;
+    --step-label-active-complete-color: #818E8D;
+
+    --required-text-footer-color: #818E8D;
+}
+
+/* tabs moduli */
+.moduli .kt-tabs-title-list li.kt-tab-title-inactive a {
+    border-radius: 0;
+}
+.moduli .kt-tabs-wrap .kt-title-item.kt-tab-title-inactive {
+    margin-top: 8px!important;
+}
+/* element next to active */
+.moduli .kt-title-item.kt-title-item-1.kt-tab-title-active + .kt-title-item.kt-title-item-2.kt-tab-title-inactive > a{
+    border-top-left-radius: 0px !important;
+}
+/* element before active */
+.moduli .kt-title-item.kt-title-item-1.kt-tab-title-inactive > a {
+    border-top-right-radius: 0px !important;
+}
+
+/* title */
+.gform_heading .gform_title {
+    color: var(--title-color);
+}
+/* end title */
+
+/* label */
+form[id^='gform'] .gfield_label.gform-field-label {
+	color: var(--label-color);
+}
+form[id^='gform'] .gfield label.gfield_label.focused {
+    color: var(--label-color-focused);
+}
+form[id^='gform'] .gfield_error label, form[id^='gform'] .gfield_error .gfield_required {
+    color: var(--label-error-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_required {
+    color: var(--label-required-color);
+}
+/* end label */
+
+/* datapicker */
+.gform_wrapper.gravity-theme form[id^='gform'] .datepicker.gform-datepicker {
+    width: 100%;
+}
+
+/* input */
+.gform_wrapper.gravity-theme form[id^='gform'] input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='button']),
+.gform_wrapper.gravity-theme form[id^='gform'] textarea, .gform_wrapper.gravity-theme form[id^='gform'] select {
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid var(--input-border-color);
+    border-left: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 60px;
+    padding: 20px 15px 5px 0;
+    transition: all .2s ease;
+    letter-spacing: .025em;
+    color: var(--input-text-color);
+    font-size: 20px;
+    font-weight: 400;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error [aria-invalid=true] {
+    border: none;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error select[aria-invalid=true],
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield_error textarea[aria-invalid=true] {
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid var(--input-border-color);
+    border-left: none;
+}
+
+.gform_wrapper.gravity-theme form[id^='gform'] .field_required {
+    display: flex;
+    justify-content: end;
+}
+/* end input */
+
+/* step */
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_active .gf_step_number {
+	background-color: var(--step-number-active-background-color);
+	color: var(--step-number-active-color);
+}
+.gform_wrapper.gravity-theme .gf_step_label {
+	color: var(--step-label-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_number {
+	background: var(--step-number-background-color);
+	color: var(--step-number-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_completed .gf_step_number {
+	background-color: var(--step-number-complete-color);
+	color: var(--white-color);
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_active .gf_step_label,
+.gform_wrapper.gravity-theme form[id^='gform'] .gf_step_completed .gf_step_label {
+	color: var(--step-label-active-complete-color);
+}
+/* end steps */
+
+/* checkbox  */
+form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:before {
+    height: 12px;
+}
+
+form[id^='gform'] .gfield.gfield--type-checkbox {
+    top: 30px;
+}
+form[id^='gform'] .gfield.gfield--type-checkbox > legend {
+    position: relative;
+    top: 10px;
+    font-weight: bold;
+    color: var(--input-choice-checkbox-leggend);
+}
+form[id^='gform'] .gfield_checkbox label {
+    color: var(--input-choice-checkbox-label);
+}
+form[id^='gform'] .gfield_checkbox label a {
+    color: var(--input-choice-checkbox-label-link);
+}
+form[id^='gform'] input.gfield-choice-input {
+	border: 2px solid var(--input-choice-checkbox-border);
+    border-radius: 0;
+}
+form[id^='gform'] .gfield-choice-input[type=checkbox]:checked{
+    border: 2px solid var(--input-choice-checkbox-border-selected);
+}
+form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:before {
+	background-color: var(--input-choice-checkbox-background);
+    border-radius: 0;
+}
+/* override checkbox - se si vuole personalizzare lo sfondo di una checkbox decommentare di seguito */
+/*
+form[id^='gform'] input[type=checkbox]:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0;
+    border: 1px solid var(--input-choice-checkbox-border-override);
+    /*border-radius: 3px;*
+    padding: 1px;
+    background-color: var(--input-choice-checkbox-background);
+}
+form[id^='gform'] input[type=checkbox]:checked:before {
+    background-color: var(--input-choice-checkbox-background);
+}
+form[id^='gform'] input[type=checkbox]:checked:after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 10px;
+    border: solid var(--input-choice-checkbox-border);
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 2px;
+    left: 6px;
+}
+
+/* checkbox type radio */
+form[id^='gform'] input[type=radio] {
+    border-radius: 50%;
+}
+form[id^='gform'] input[type=radio]:before {
+	width: 13px;
+    height: 12px;
+    background-color: var(--input-choice-radio-center-background);
+}
+form[id^='gform'] input[type=radio]:checked {
+    background-color: var(--input-choice-radio-background);
+    border-color: var(--input-choice-radio-border-color-checked);
+}
+form[id^='gform'] .gfield-choice-input[type=radio]:checked:before {
+	width: 13px;
+    height: 12px;
+    background-color: var(--input-choice-radio-center-background);
+}
+/* end override checkbox */
+
+/* textarea */
+form[id^='gform'] .gfield.gfield--type-textarea {
+    top: 40px;
+}
+
+/* Trasforma il pulsante input file upload input[type="file"] */
+form[id^='gform'] .gfield_label.gform-field-label:has(+ .ginput_container_fileupload) {
+    padding-top: 90px;
+}
+form[id^='gform'] .gfield_label.gform-field-label.focused:has(+ .ginput_container_fileupload){
+    padding-top: 170px;
+}
+
+/* Chrome, Safari */
+/*#gform_8 ::-webkit-file-upload-button {*/
+form[id^='gform'] ::-webkit-file-upload-button {
+    background: var(--white-color);
+    border: 2px solid var(--nobackground-border-text-color);
+    border-radius: 4px;
+    color: var(--nobackground-border-text-color);
+    font-weight: 600;
+    padding: 10px 15px;
+    width: 200px;
+    line-height: 1.3em;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+}
+/*input[type="file"]::file-selector-button {*/
+form[id^='gform'] input[type="file"]::file-selector-button {
+    background: var(--white-color);
+    border: 2px solid var(--nobackground-border-text-color);
+    border-radius: 4px;
+    color: var(--nobackground-border-text-color);
+    font-weight: 600;
+    padding: 10px 10px;
+    width: 200px;
+    line-height: 1.3em;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+}
+/* Edge */
+/*#gform_8 ::file-upload-button{*/
+form[id^='gform'] ::file-upload-button{
+    background: var(--white-color);
+    border: 2px solid var(--nobackground-border-text-color);
+    border-radius: 4px;
+    color: var(--nobackground-border-text-color);
+    font-weight: 600;
+    padding: 10px 10px;
+    width: 200px;
+    line-height: 1.3em;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+}
+/* END: pulsante input file upload input[type="file"] */
+
+/* consent */
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-consent {
+    top: 40px;
+    z-index: 1;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-consent > div:first-child {
+    height: 60px;
+}
+
+/* gform footer (submit container) */
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_footer,
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer {
+    flex-direction: column;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_footer {
+    margin-top: 30px;
+}
+
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_footer .required-text ,
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer .required-text {
+	color: var(--required-text-footer-color);
+    text-align: right;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_footer input[type='submit'],
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer input[type='submit'],
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer .gform_previous_button,
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer .gform_next_button {
+	background-color: var(--input-submit-background-color);
+    color: var(--input-submit-text-color);
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 40px;
+    border-radius: 10px;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] div[id^='gform_page_2']:first-child .gform_page_footer .gform_next_button{
+    width: 100%;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] div[id^='gform_page_2'] .gform_page_footer {
+    display: flex;
+    flex-direction: row;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] div[id^='gform_page_2'] .gform_page_footer .gform_previous_button {
+    background-color: transparent;
+    border: 2px solid var(--input-submit-previus-border-color);
+    color: var(--input-submit-previus-text-color) !important;
+    border-bottom: 2px solid !important;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] div[id^='gform_page_2']:last-child .gform_page_footer{
+    margin-top: 40px;
+}
+
+/* form step 'continua' button */
+.gform_wrapper.gravity-theme .gform_page_footer {
+    grid-template-columns: 1fr !important;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gform_page_footer input[type='button'] {
+    color: var(--white-color) !important;
+    border-bottom: none !important;
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+/* se si vuole l'icona all'interno del pulsante submit, decommentare di seguito */
+/*
+form[id^='gform'] .gform_footer input[type='submit'] {
+    background: url('/wp-content/themes/blocksy-child/gravity/inc/images/arrow-right.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+    padding-right: 55px;
+}
+*/
+/* end gform footer (submit container) */
+
+/* error, validation container sopra form */
+/*.gform_wrapper.gravity-theme .gform_validation_errors {
+    margin-bottom: 20px !important;
+}*/
+
+/* veicoli */
+.label_veicoli {
+    background-color: var(--input-submit-background-color);
+    color: var(--white-color);
+    padding: 5px 10px;
+}
+
+.bottone-container{
+    text-align: center;
+    margin-top: 20px;
+}
+.bottone-container > a, span > a[id^='rimuovirichiesta'] {
+    color: #818E8D;
+    cursor: pointer;
+}
+.bottone-container > a, span > a[id^='rimuovirichiesta'] > .fa{
+    padding: 0 8px 0 10px;
+}
+
+/* informazioni nascoste */
+.informazione_nascosta {
+    display: none;
+}
+
+.gform_wrapper.gravity-theme .gsection.separatore {
+    border-bottom: 0;
+}
