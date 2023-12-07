@@ -260,19 +260,19 @@ add_filter(
 
 /**
  * Shortcode per la modifica delle informazioni di un form compilato dall'utente.
- * Lo shortcode leggere i parametri fid (ID form), email (USER email), feid (ENTITY ID form) che vengono passati dall'url inserito
+ * Lo shortcode leggere i parametri fid (ID form), email (USER email ID), feid (ENTITY ID form) che vengono passati dall'url inserito
  * nell'email con la funzione gform_pre_send_email.
  *
- * @version 1.0.0
+ * @version 1.1.0
  *
  * @return mixed struttura html form con informazioni utente.
  */
 function get_user_information() {
 	ob_start();
 	if ( isset( $_GET['fid'] ) && isset( $_GET['email'] ) && isset( $_GET['feid'] ) ) {
-		$form_id    = $_GET['fid'];
-		$user_email = $_GET['email'];
-		$entry_id   = $_GET['feid'];
+		$form_id    = $_GET['fid']; // phpcs:ignore
+		$user_email = $_GET['email']; // phpcs:ignore
+		$entry_id   = $_GET['feid']; // phpcs:ignore
 
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'gf_entry_meta';
@@ -283,7 +283,7 @@ function get_user_information() {
 		global $wpdb;
 		$table_name_form = $wpdb->prefix . 'gf_form_meta';
 
-		$query_form  = $wpdb->prepare("SELECT display_meta FROM $table_name_form WHERE `form_id` = $form_id");
+		$query_form  = $wpdb->prepare( "SELECT display_meta FROM $table_name_form WHERE `form_id` = $form_id" );
 		$result_form = $wpdb->get_results( $query_form  );
 
 		// GFEntryDetail::lead_detail_grid( $form, $entry );.
@@ -301,11 +301,29 @@ function get_user_information() {
 		if ( $form_exist ) {
 			$form  = GFAPI::get_form( $form_id );
 
-			echo '<form id="edit-form">';
-			foreach ( $form['fields'] as $field ) {
+			/*echo '<pre>';
+			var_dump( $form['fields'][1] );
+			echo '</pre>';*/
 
-				if ( $field->isRequired ) {
-					$span = '<span>*</span>';
+			echo '<div class="gform_wrapper gravity-theme">';
+
+			if ( '' !== $form['title'] || '' !== $form['description'] ) {
+				echo '<div class="gform_heading">';
+				if ( '' !== $form['title'] ) {
+					echo '<h2 class="gform_title">' . esc_attr( $form['title'] ) . '</h2>';
+				}
+				if ( '' !== $form['description'] ) {
+					echo '<p class="gform_description">' . esc_attr( $form['description'] ) . '</p>';
+				}
+				echo '</div>';
+			}
+
+			echo '<form method="post" enctype="multipart/form-data" id="edit-form" data-formid="' . esc_attr( $form['id'] ) . '">';
+			foreach ( $form['fields'] as $field ) {
+				$content = $field->content;
+
+				if ( $field['isRequired'] ) {
+					$span = '<span class="gfield_required">*</span>';
 				} else {
 					$span = '<span></span>';
 				}
@@ -317,9 +335,59 @@ function get_user_information() {
 							$value = $data[1];
 						}
 					}
-					echo '<div>';
-					echo '<legend>' . $field->label . ' ' . $span . '</legend>';
-					echo '<input id="' . $field->id . '" type="' . $field->type . '" value="' . $value . '" class="' . $field->size . '">';
+
+					$dimension_field = '';
+					if ( 'large' === $field['size'] ) {
+						$dimension_field = 'gfield--width-full';
+					} elseif ( 'medium' === $field['size'] ) {
+						$dimension_field = 'medium';
+					}
+
+					$description_placement      = ( $field['descriptionPlacement'] ) ? $field['descriptionPlacement'] : '';
+					$description_value          = ( $field['description'] ) ? $field['description'] : '';
+					$class_has_description      = '';
+					if ( '' === $description_value ) {
+						$class_has_description = ' gfield--no-description';
+					} else {
+						$class_has_description = ' gfield--has-description';
+					}
+					if ( 'above' === $description_placement || '' === $description_placement ) {
+						$class_position_description = ' field_description_above';
+					} else {
+						$class_position_description = ' field_description_below';
+					}
+
+					$label_placement = ( $field['labelPlacement'] ) ? $field['labelPlacement'] : '';
+					$class_label     = '';
+					if ( '' !== $label_placement ) {
+						$class_label = ' ' . $label_placement;
+					}
+
+					$visibility       = ( $field['visibility'] ) ? $field['visibility'] : '';
+					$class_visibility = '';
+					if ( '' !== $visibility ) {
+						$class_visibility = ' gfield_visibility_' . $visibility;
+					}
+
+					echo '<div
+						id="' . esc_attr( 'field_' . $field['formId'] . '_' . $field['id'] ) . '"class="gfield ' . esc_attr( 'gfield--type-' . $field['type'] ) . ' gfield--width-full field_sublabel_above' . esc_attr( $class_has_description ) . esc_attr( $class_position_description ) . esc_attr( $class_label ) . esc_attr( $class_visibility ) . '">';
+
+					echo '<legend class="gfield_label gform-field-label" for="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '">' . esc_attr( $field->label ) . ' ' . $span . '</legend>';
+
+					if ( 'above' === $description_placement ) {
+						echo '<div class="gfield_description" id="' . esc_attr( 'gfield_description_' . $field['formId'] . '_' . $field['id'] ) . '">' . esc_html( $description_value ) . '</div>';
+					}
+
+					echo '<div class="ginput_container ginput_container_text">';
+					$aria_required = ( $field['isRequired'] ) ? ' aria-required="true" ' : '';
+
+					echo '<input name="' . esc_attr( 'input_' . $field['id'] ) . '" id="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '" type="' . esc_attr( $field['type'] ) . '" value="' . $value . '" class="' . esc_attr( $field->size ) . '"' . $aria_required . 'aria-invalid="false">';
+					echo '</div>';
+
+					if ( 'below' === $description_placement ) {
+						echo '<div class="gfield_description" id="' . esc_attr( 'gfield_description_' . $field['formId'] . '_' . $field['id'] ) . '">' . esc_html( $description_value ) . '</div>';
+					}
+
 					echo '</div>';
 				}
 
@@ -451,6 +519,8 @@ function get_user_information() {
 			echo '<input type="hidden" id="results" data-results =\'' . json_encode( $string ) . '\' >';
 			echo '<input type="button" id="edit-form-submit-modify" value="Invia">';
 			echo '</form>';
+
+			echo '</div>';
 		}
 
 		/*echo '<form>';
