@@ -6,10 +6,16 @@
  * @return void
  */
 function gravity_enqueue_styles_scripts() {
-	// Font-awesome.
+	// font-awesome.
 	wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css', array(), '', 'all' );
 
-	// Regole generali per gravity form.
+	// registro il css di base di gravity chce viene richiamato dallo shortcode /inc/helpers/helpers.php -> edit_form.
+	$my_plugin = WP_PLUGIN_DIR . '/gravityforms';
+	if ( is_dir( $my_plugin ) ) {
+		wp_register_style( 'basic-gravity-theme', '/wp-content/plugins/gravityforms/assets/css/dist/basic.min.css' );
+	}
+
+	// regole generali per gravity form.
 	wp_enqueue_style( 'gf-custom-general', get_stylesheet_directory_uri() . '/gravity/inc/assets/gf-custom-general.css', array(), '1.0.0', 'all' );
 
 	// style01 -> willbecreative.com.
@@ -47,3 +53,4 @@ add_action( 'wp_enqueue_scripts', 'gravity_enqueue_styles_scripts' );
 // HELPERS
 // ----------------------------------------------------------------------------------------
 include_once 'inc/helpers/helpers.php';
+// include_once 'inc/helpers/create_fields_dynamically.php';

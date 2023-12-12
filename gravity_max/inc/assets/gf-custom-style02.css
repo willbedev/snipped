@@ -370,3 +370,302 @@ form[id^='gform'] .gform_footer input[type='submit'] {
     margin-bottom: 20px !important;
 }*/
 
+
+/*-----------------------------------------------------------
+EDIT FORM
+-----------------------------------------------------------*/
+/* title */
+.gform_heading .gform_title {
+    color: var(--title-color);
+}
+/* end title */
+
+/* progress bar */
+.gform_wrapper.gravity-theme form[id^='edit-form'] p.gf_progressbar_title {
+    color: var(--robins-egg-blue);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gf_progressbar {
+    background: var(--pattens-blue);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gf_progressbar_percentage.percentbar_green {
+    background-color: var(--robins-egg-blue);
+}
+.gform_wrapper.gravity-theme .gf_progressbar_percentage.percentbar_green.percentbar_100 {
+    background-color: var(--robins-egg-blue);
+}
+/* END progress bar */
+
+/* step */
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gf_step_active .gf_step_number {
+	background-color: var(--step-number-active-background-color);
+	color: var(--step-number-active-color);
+}
+.gform_wrapper.gravity-theme .gf_step_label {
+	color: var(--step-label-color);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gf_step_number {
+	background: var(--step-number-background-color);
+	color: var(--step-number-color);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gf_step_completed .gf_step_number {
+	background-color: var(--step-number-complete-color);
+	color: var(--white-color);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gf_step_active .gf_step_label,
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gf_step_completed .gf_step_label {
+	color: var(--step-label-active-complete-color);
+}
+/* end steps */
+
+/* label */
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_label.gform-field-label {
+	color: var(--label-color);
+    left: 15px;
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_label.gfield_label.focused {
+    color: var(--label-color-focused);
+    background-color: var(--white-color);
+    left: 5px;
+    padding: 3px;
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-date .gfield_label.focused {
+    color: var(--label-color-focused);
+    background-color: var(--white-color);
+    left: 5px;
+    padding: 3px;
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-time .gfield_label.focused {
+    color: var(--label-color-focused);
+    background-color: var(--white-color);
+    left: 5px;
+    padding: 3px;
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-email > .gfield_label.gform-field-label.focused {
+    background-color: var(--white-color);
+    left: 5px;
+    padding: 3px;
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_required {
+    color: var(--label-required-color);
+}
+
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error .gfield_label.gform-field-label {
+    color: var(--label-error-color);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-date.gfield_error .gfield_label.focused {
+    color: var(--label-error-color);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-time.gfield_error .gfield_label.focused {
+    color: var(--label-error-color);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error .gfield_required {
+    color: var(--label-error-color);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error .gfield_checkbox label {
+    color: var(--label-error-color);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error .gfield_checkbox label > a {
+    color: var(--label-error-color);
+}
+/* end label */
+
+
+/* input */
+.gform_wrapper.gravity-theme form[id^='edit-form'] input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='button']),
+.gform_wrapper.gravity-theme form[id^='edit-form'] textarea,
+.gform_wrapper.gravity-theme form[id^='edit-form'] select {
+    border: 1px solid var(--input-border-color);
+    color: var(--input-text-color);
+    padding: 10px 15px 5px 5px;
+}
+
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error input:not([type='file']):not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='button']),
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error textarea,
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error select {
+    color: var(--gfield-error-input-color);
+}
+
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error select[aria-invalid=true],
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error textarea[aria-invalid=true] {
+    border-bottom-color: 2px solid var(--input-border-color);
+}
+/* end input */
+
+/* checkbox  */
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-checkbox > legend {
+    color: var(--input-choice-checkbox-leggend);
+    left: 0;
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_checkbox label {
+    color: var(--input-choice-checkbox-label);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_checkbox label a {
+    color: var(--input-choice-checkbox-label-link);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] input.gfield-choice-input {
+	border: 2px solid var(--input-choice-checkbox-border);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield-choice-input[type=checkbox]:checked{
+    border: 2px solid var(--input-choice-checkbox-border-selected);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield-choice-input[type=checkbox]:checked:before {
+	background-color: var(--input-choice-checkbox-background);
+    border-radius: 0;
+}
+
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error .gfield-choice-input[type=checkbox]:checked {
+    border: 2px solid var(--input-choice-checkbox-border-error);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error .gfield-choice-input[type=checkbox]:checked:before {
+    background-color: var(--input-choice-checkbox-background-error);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error input.gfield-choice-input {
+    border: 2px solid var(--input-choice-checkbox-border-error);
+}
+
+/* override checkbox - se si vuole personalizzare lo sfondo di una checkbox decommentare di seguito */
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield-choice-input[type=checkbox]:checked:before {
+    width: 14px;
+    height: 14px;
+    top: 0;
+    left: 0;
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield-choice-input[type=checkbox]:checked:after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 10px;
+    border: solid var(--white-color);
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 1px;
+    left: 5px;
+}
+
+/* checkbox type radio */
+.gform_wrapper.gravity-theme form[id^='edit-form'] input[type=radio]:before {
+    background-color: var(--input-choice-radio-center-background);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] input[type=radio]:checked {
+    background-color: var(--input-choice-radio-background);
+    border-color: var(--input-choice-radio-border-color-checked);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield-choice-input[type=radio]:checked:before {
+    background-color: var(--input-choice-radio-center-background);
+}
+/* end override checkbox */
+
+
+/* Trasforma il pulsante input file upload input[type="file"] */
+/* Chrome, Safari */
+/*#gform_8 ::-webkit-file-upload-button {*/
+.gform_wrapper.gravity-theme form[id^='edit-form'] input[type="file"]::-webkit-file-upload-button {
+    background: var(--robins-egg-blue);
+    border-color: var(--robins-egg-blue);
+    color: var(--white-color);
+}
+/*input[type="file"]::file-selector-button {*/
+.gform_wrapper.gravity-theme form[id^='edit-form'] input[type="file"]::file-selector-button {
+    background: var(--robins-egg-blue);
+    border-color: var(--robins-egg-blue);
+    color: var(--white-color);
+}
+/* Edge */
+/*#gform_8 ::file-upload-button{*/
+.gform_wrapper.gravity-theme form[id^='edit-form'] input[type="file"]::file-upload-button{
+    background: var(--robins-egg-blue);
+    border-color: var(--robins-egg-blue);
+    color: var(--white-color);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-fileupload i.fa.fa-upload {
+	color: var(--white-color);
+}
+
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-fileupload .gform_delete_file {
+    background-color: var(--robins-egg-blue);
+    color: var(--white-color);
+}
+
+/* error */
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-fileupload.gfield_error label.gfield_label.focused {
+    color: var(--strong-red);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-fileupload.gfield_error .gfield_description {
+    color: var(--strong-red);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-fileupload.gfield_error .gfield_fileupload_filename {
+    color: var(--strong-red);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-fileupload.gfield_error .gform_delete_file {
+    background-color: var(--strong-red);
+    color: var(--white-color);
+}
+
+/* Chrome, Safari */
+/*#gform_8 ::-webkit-file-upload-button {*/
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error input[type="file"]::-webkit-file-upload-button {
+    background: var(--strong-red);
+    border-color: var(--strong-red);
+    color: var(--white-color);
+}
+/*input[type="file"]::file-selector-button {*/
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error input[type="file"]::file-selector-button {
+    background: var(--strong-red);
+    border-color: var(--strong-red);
+    color: var(--white-color);
+}
+/* Edge */
+/*#gform_8 ::file-upload-button{*/
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error input[type="file"]::file-upload-button{
+    background: var(--strong-red);
+    border-color: var(--strong-red);
+    color: var(--white-color);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield_error .gfield.gfield--type-fileupload i.fa.fa-upload {
+    color: var(--white-color);
+}
+/* END: pulsante input file upload input[type="file"] */
+
+/* gform footer (submit container) */
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gform_footer .required-text ,
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gform_page_footer .required-text {
+	color: var(--required-text-footer-color);
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gform_footer input[type='submit'],
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gform_page_footer input[type='submit'],
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gform_page_footer .gform_previous_button,
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gform_page_footer .gform_next_button {
+	background-color: var(--input-submit-background-color);
+    color: var(--input-submit-text-color);
+    width: auto;
+    border-radius: 6px;
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gform_page_footer .gform_previous_button {
+    background-color: transparent;
+    border: 2px solid var(--input-border-color);
+    color: var(--input-submit-previus-text-color);
+}
+
+/* form step 'continua' button */
+.gform_wrapper.gravity-theme .gform_page_footer {
+    grid-template-columns: 1fr !important;
+}
+
+/* se si vuole l'icona all'interno del pulsante submit, decommentare di seguito */
+/*
+form[id^='edit-form'] .gform_footer input[type='submit'] {
+    background: url('/wp-content/themes/blocksy-child/gravity/inc/images/arrow-right.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+    padding-right: 55px;
+}
+*/
+/* end gform footer (submit container) */
+
+/* error, validation container sopra form */
+/*.gform_wrapper.gravity-theme .gform_validation_errors {
+    margin-bottom: 20px !important;
+}*/

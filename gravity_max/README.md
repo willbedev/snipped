@@ -9,6 +9,14 @@ Questa cartella contine un codici custom e personalizzazioni di gravity form.
 <a name="new-functions"></a>
 ***
 ## Nuove funzionalità
+
+**06/12/2023**
+Il form generato dall'edit form ora permette di ereditare il codice CSS dello stile che si è scelto style01/style02
+- Aggiunte funzionalità allo shortcode [edit_form]. E' stata migliorata la struttura html per i campi field text, select, radio-button.
+- Aggiunto il CSS per i fogli general, style01, style02 per ereditare le stesse classi e attributi
+- fix bug minori.
+-- versione 1.2.1
+
 **06/12/2023**
 - Creato shortcode [edit_form] per la modifica delle informazioni di un form compilato dall'utente.
 -- versione 1.0.0
@@ -17,6 +25,12 @@ Questa cartella contine un codici custom e personalizzazioni di gravity form.
 -- codice inserito in helpers.php filtro **gform_field_css_class**
 
 <a name="shortcodes"></a>
+***
+## Lista degli shortcode
+- [edit_form]: nessun parametro in ingresso.
+-- Dipendenze: parametri necessari ( fid (ID form), email (USER email), feid (ENTITY ID form) ) passati nell'url della pagina.
+-- Il form eredita lo stile utilizzato style01/style02.
+-- versione 1.2.1
 ***
 ## Lista degli shortcode
 - [edit_form]: nessun parametro in ingresso.
