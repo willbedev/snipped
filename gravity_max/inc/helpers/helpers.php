@@ -263,12 +263,13 @@ add_filter(
  * Lo shortcode leggere i parametri fid (ID form), email (USER email ID), feid (ENTITY ID form) che vengono passati dall'url inserito
  * nell'email con la funzione gform_pre_send_email.
  *
- * @version 1.2.1
+ * @version 1.3.1
  *
  * @return mixed struttura html form con informazioni utente.
  */
 function get_user_information() {
 	wp_enqueue_style( 'basic-gravity-theme' );
+	wp_enqueue_script( 'gravity-datepicker' );
 
 	ob_start();
 	if ( isset( $_GET['fid'] ) && isset( $_GET['email'] ) && isset( $_GET['feid'] ) ) {
@@ -303,9 +304,9 @@ function get_user_information() {
 		if ( $form_exist ) {
 			$form  = GFAPI::get_form( $form_id );
 
-			echo '<pre>';
-			// var_dump( $form );
-			echo '</pre>';
+			/*echo '<pre>';
+			var_dump( $form['fields'][6] );
+			echo '</pre>';*/
 
 			echo '<div class="gform_wrapper gravity-theme gform-theme--no-framework" data-form-theme="gravity-theme">';
 
@@ -329,9 +330,9 @@ function get_user_information() {
 			foreach ( $form['fields'] as $field ) {
 				$content = $field->content;
 
-				/*if ( 'text' === $field->type ) :
+				/*if ( 'date' === $field->type ) :
 					echo '<pre>';
-					var_dump( $field );
+					var_dump( $field['date'] );
 					echo '</pre>';
 				endif;*/
 
@@ -469,24 +470,29 @@ function get_user_information() {
 					echo '</fieldset>';
 				}
 
-				/*if ( 'date' === $field->type ) {
-					echo '<div>';
-						echo '<label>' . $field->label . ' ' . $span . '</label>';
-						echo '<div class="gfield_radio" style="display:flex; flex-direction: row; flex-wrap: wrap;">';
-						//echo '<input id="' . $field->id . '" type="' . $field->type . '" value="' . $value . '" class="' . $field->size . '">';
-						foreach ( $field->choices as $choise ) {
-							$is_selected = '';
-							if ( $choise->isSelected ) {
-								$is_selected = 'checked';
-							}
-							echo '<div class="gchoice" style="width:auto; margin-left: 15px">';
-								echo '<input name="' . $choise['text'] . '" type="radio" value="' . $choise['value'] . '" ' . $is_selected . '>';
-								echo '<label style="padding-left: 5px;">' . $choise['value'] . '</label>';
-							echo '</div>';
-						}
-						echo '</div>';
+				if ( 'date' === $field->type ) {
+
+					$field['type'] = 'text';
+
+					echo '<div
+						id="' . esc_attr( 'field_' . $field['formId'] . '_' . $field['id'] ) . '"class="gfield ' . esc_attr( 'gfield--type-' . $field['type'] ) . ' gfield--input-type-datepicker gfield--datepicker-default-icon' . esc_attr( $dimension_field ) . 'field_sublabel_above' . esc_attr( $class_added ) . esc_attr( $gfield_contains_required ) . esc_attr( $class_has_description ) . esc_attr( $class_position_description ) . esc_attr( $class_label ) . esc_attr( $class_visibility ) . '" data-js-reload="' . esc_attr( 'field_' . $field['formId'] . '_' . $field['id'] ) . '">';
+
+					echo '<label class="gfield_label gform-field-label focused" for="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '">' . esc_attr( $field->label ) . ' ' . $span . '</label>';
+
+					echo '<div class="ginput_container ginput_container_date">';
+
+					echo '<input name="' . esc_attr( 'input_' . $field['id'] ) . '" id="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '" type="' . esc_attr( $field['type'] ) . '" value="' . $value . '" class="datepicker gform-datepicker mdy datepicker_with_icon gdatepicker_with_icon"' . $aria_required . 'placeholder="mm/gg/aaaa" aria-describedby="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] . '_date_format' ) . '" aria-invalid="false">';
+
+					echo '<img class="ui-datepicker-trigger" src="https://test.willbedev.com/wp-content/plugins/gravityforms/images/datepicker/datepicker.svg" alt="Seleziona la data" title="Seleziona la data">';
+
+					echo '<span id="'. esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] . '_date_format' ) . '" class="screen-reader-text">MM slash GG slash AAAA</span>';
+
 					echo '</div>';
-				}*/
+
+					echo '</div>';
+
+					echo '</div>';
+				}
 
 				if ( 'checkbox' === $field->type ) {
 					if ( 'Privacy' === $field->label ) {

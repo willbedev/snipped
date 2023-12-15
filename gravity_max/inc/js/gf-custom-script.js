@@ -139,8 +139,17 @@ jQuery( document ).ready( function( $ ) {
 	$( '.gform_validation_error_link' ).on( 'click', function(e) {
 		e.preventDefault();
 	});
-
 	
+	// Edit form.
+
+	$( "#edit-form .datepicker" ).datepicker({
+		changeMonth: true,
+		changeYear: true,
+		todayHighlight: true,
+		autoclose: true,
+		//dateFormat: "yy-mm-dd"
+	}); // datepicker.
+
 	$( "#edit-form .ginput_container_checkbox > .gfield_checkbox > .gchoice > input" ).on( "click", function() {
 		if ( $(this).is(':checked') ) {
 			$(this).attr('checked', 'checked');
