@@ -521,6 +521,25 @@ EDIT FORM
     width: 100%;
 }
 
+/* time */
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-time .ginput_container {
+	display: flex;
+	flex-flow: row wrap;
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-time .ginput_container .ginput_container_time {
+	flex-basis: min-content;
+    max-width: 64px;
+    min-width: 64px;
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-time .ginput_container .ginput_container_time > input[type="number"] {
+	padding: 0 0 0 10px !important;
+}
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-time .ginput_container .hour_minute_colon {
+    line-height: 2;
+    padding: 0 8px;
+	align-self: center;
+}
+
 /* textarea */
 .gform_wrapper.gravity-theme form[id^='edit-form'] .gfield.gfield--type-textarea {
     top: 40px;

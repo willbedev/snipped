@@ -204,13 +204,14 @@ jQuery( document ).ready( function( $ ) {
 	$( '#edit-form-submit-modify' ).on( 'click', function(e){
 		e.preventDefault();
 
-		var data = $('input#results').data('results');
+		var data    = $('input#results').data('results');
+		var id_form = $('#edit-form').attr('data-formid');
 
-		$.each( data, function(index, value){
+		$.each( data, function( index, value ) {
 			if ( value[0].includes(".") ) {
 				var tmp = value[0].split('.');
 				value[0] = tmp[0] + '\\.' + tmp[1];
-			}
+			} 
 			if ( typeof $( "#"+value[0] ).prop('type') === 'undefined' ) {
 				$( "#"+value[0] + ' input' ).each( function(index2, value2) {
 					if ( $(value2).is(':checked') ) {
@@ -218,6 +219,33 @@ jQuery( document ).ready( function( $ ) {
 					}
 				});
 			}
+
+			if ( $( "#input_"+id_form+"_"+value[0] ).prop('type') === 'text' ) {
+				data[index][1] = $( "#input_"+id_form+"_"+value[0] ).val();
+			}
+
+			if ( $( "#input_"+id_form+"_"+value[0] ).hasClass('gfield_radio') ) {
+				$( "#input_"+id_form+"_"+value[0] ).find('>div>input').each( function(index2, value2) {
+					if ( $(this).is(':checked') ) {
+						data[index][1] = $(this).val();
+					}
+				});
+			}
+
+			if ( $( "#input_"+id_form+"_"+value[0] ).prop('type') === 'select-one' ) {
+				$( "#input_"+id_form+"_"+value[0] ).find( 'option' ).each( function(index2, value2) {
+					if ( $(this).is(':checked') ) {
+						data[index][1] = $(this).val();
+					}
+				});
+			}
+
+			if ( $( "#input_"+id_form+"_"+value[0] ).hasClass('ginput_container_time') ) {
+				var hour    = $( "#input_"+id_form+"_"+value[0]+"_1" ).val();
+				var minutes = $( "#input_"+id_form+"_"+value[0]+"_2" ).val();
+				data[index][1] = hour+":"+minutes;
+			}
+
 			if ( $( "#"+value[0] ).prop('type') === 'checkbox' ) {
 				if ( ! $( "#"+value[0] ).is(':checked') ) {
 					data[index][1] = '';
@@ -225,32 +253,12 @@ jQuery( document ).ready( function( $ ) {
 					data[index][1] = $( "#"+value[0] ).val();
 				}
 			}
-			if ( $( "#"+value[0] ).prop('type') === 'select-one' ) {
-				$( "#"+value[0] ).find( 'option' ).each( function(index2, value2) {
-					if ( $(this).is(':checked') ) {
-						data[index][1] = $(this).val();
-					}
-				});
-			}
-			if ( $( "#"+value[0] ).prop('type') === 'text' ) {
-				data[index][1] = $( "#"+value[0] ).val();
-			}
+
 			if ( $( "#"+value[0] ).prop('type') === 'textarea' ) {
 				data[index][1] = $( "#"+value[0] ).val();
 			}
 		});
 		
-		$('#63').find( 'option' ).each( function(index2, value2) {
-			if ( $(this).is(':checked') ) {
-				if ( $(this).val() === 'No' ) {
-					$('#64').val('').trigger('change'); // punto di ritrovo.
-					data[7][1] = '';
-					$('#65').text(''); // textarea
-					data[8][1] = '';
-				}
-			}
-		});
-
 		$.ajax({
 			type: 'POST',
 			url: ajax_edit_form.ajaxurl,
@@ -274,5 +282,6 @@ jQuery( document ).ready( function( $ ) {
 				//btnLoadMore.text(btnLoadMoreTxt); // changing the button label
 			}
 		});
+
 	});
 });

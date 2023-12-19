@@ -263,7 +263,7 @@ add_filter(
  * Lo shortcode leggere i parametri fid (ID form), email (USER email ID), feid (ENTITY ID form) che vengono passati dall'url inserito
  * nell'email con la funzione gform_pre_send_email.
  *
- * @version 1.3.1
+ * @version 1.3.2
  *
  * @return mixed struttura html form con informazioni utente.
  */
@@ -305,7 +305,7 @@ function get_user_information() {
 			$form  = GFAPI::get_form( $form_id );
 
 			/*echo '<pre>';
-			var_dump( $form['fields'][6] );
+			var_dump( $form['fields'] );
 			echo '</pre>';*/
 
 			echo '<div class="gform_wrapper gravity-theme gform-theme--no-framework" data-form-theme="gravity-theme">';
@@ -330,20 +330,19 @@ function get_user_information() {
 			foreach ( $form['fields'] as $field ) {
 				$content = $field->content;
 
-				/*if ( 'date' === $field->type ) :
+				/*if ( 'time' === $field->type ) :
 					echo '<pre>';
-					var_dump( $field['date'] );
+					var_dump( $field );
 					echo '</pre>';
 				endif;*/
 
 				$content = $field->content;
 
 				$gfield_contains_required = '';
+				$span                     = '';
 				if ( $field['isRequired'] ) {
-					$span = '<span class="gfield_required">*</span>';
+					$span = ' <span class="gfield_required">*</span>';
 					$gfield_contains_required = ' gfield_contains_required';
-				} else {
-					$span = '<span></span>';
 				}
 				$value = '';
 
@@ -396,6 +395,10 @@ function get_user_information() {
 						if ( in_array( $field->id, $data ) ) {
 							$value = $data[1];
 						}
+					}
+
+					if ( '' === $value ) {
+						return;
 					}
 
 					echo '<div
@@ -463,35 +466,89 @@ function get_user_information() {
 						echo '</div>';
 					}
 
-					echo '</div>';
+					echo '</div> <!-- /.gfield_radio -->';
 
-					echo '</div>';
+					echo '</div><!-- /.ginput_container ginput_container_radio -->';
 
 					echo '</fieldset>';
 				}
 
 				if ( 'date' === $field->type ) {
+					foreach ( $arr_data as $data ) {
+						if ( in_array( $field->id, $data ) ) {
+							$value = $data[1];
+						}
+					}
+					if ( '' === $value ) {
+						return;
+					}
+
+					$tmp_value = explode( '-', $value );
+					$value     = $tmp_value[2] . '/' . $tmp_value[1] . '/' . $tmp_value[0]; // mm/dd/YYY.
 
 					$field['type'] = 'text';
+					$aria_required = ( $field['isRequired'] ) ? ' aria-required="true" ' : '';
 
 					echo '<div
 						id="' . esc_attr( 'field_' . $field['formId'] . '_' . $field['id'] ) . '"class="gfield ' . esc_attr( 'gfield--type-' . $field['type'] ) . ' gfield--input-type-datepicker gfield--datepicker-default-icon' . esc_attr( $dimension_field ) . 'field_sublabel_above' . esc_attr( $class_added ) . esc_attr( $gfield_contains_required ) . esc_attr( $class_has_description ) . esc_attr( $class_position_description ) . esc_attr( $class_label ) . esc_attr( $class_visibility ) . '" data-js-reload="' . esc_attr( 'field_' . $field['formId'] . '_' . $field['id'] ) . '">';
 
-					echo '<label class="gfield_label gform-field-label focused" for="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '">' . esc_attr( $field->label ) . ' ' . $span . '</label>';
+					echo '<label class="gfield_label gform-field-label focused" for="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '">' . esc_attr( $field->label ) . $span . '</label>';
 
 					echo '<div class="ginput_container ginput_container_date">';
 
-					echo '<input name="' . esc_attr( 'input_' . $field['id'] ) . '" id="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '" type="' . esc_attr( $field['type'] ) . '" value="' . $value . '" class="datepicker gform-datepicker mdy datepicker_with_icon gdatepicker_with_icon"' . $aria_required . 'placeholder="mm/gg/aaaa" aria-describedby="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] . '_date_format' ) . '" aria-invalid="false">';
+					echo '<input name="' . esc_attr( 'input_' . $field['id'] ) . '" id="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '" type="' . esc_attr( $field['type'] ) . '" value="' . esc_attr( $value ) . '" class="datepicker gform-datepicker mdy datepicker_with_icon gdatepicker_with_icon"' . esc_attr( $aria_required ) . 'placeholder="mm/gg/aaaa" aria-describedby="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] . '_date_format' ) . '" aria-invalid="false">';
 
 					echo '<img class="ui-datepicker-trigger" src="https://test.willbedev.com/wp-content/plugins/gravityforms/images/datepicker/datepicker.svg" alt="Seleziona la data" title="Seleziona la data">';
 
-					echo '<span id="'. esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] . '_date_format' ) . '" class="screen-reader-text">MM slash GG slash AAAA</span>';
+					echo '<span id="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] . '_date_format' ) . '" class="screen-reader-text">MM slash GG slash AAAA</span>';
+
+					echo '</div><!-- /.ginput_container.ginput_container_date -->';
+
+					echo '</div>';
+				}
+
+				if ( 'time' === $field->type ) {
+					foreach ( $arr_data as $data ) {
+						if ( in_array( $field->id, $data ) ) {
+							$value = $data[1];
+						}
+					}
+					if ( '' === $value ) {
+						return;
+					}
+
+					$tmp_value = explode( ':', $value );
+					$hour      = $tmp_value[0];
+					$minutes   = $tmp_value[1];
+
+					echo '<fieldset
+						id="' . esc_attr( 'field_' . $field['formId'] . '_' . $field['id'] ) . '"class="gfield ' . esc_attr( 'gfield--type-' . $field['type'] ) . esc_attr( $dimension_field ) . 'field_sublabel_above' . esc_attr( $class_added ) . esc_attr( $gfield_contains_required ) . esc_attr( $class_has_description ) . esc_attr( $class_position_description ) . esc_attr( $class_label ) . esc_attr( $class_visibility ) . '" data-js-reload="' . esc_attr( 'field_' . $field['formId'] . '_' . $field['id'] ) . '">';
+
+					echo '<legend class="gfield_label gform-field-label focused">' . esc_attr( $field->label ) . $span . '</legend>';
+
+					echo '<div class="ginput_container ginput_complex gform-grid-row">';
+
+					echo '<div class="gfield_time_hour ginput_container ginput_container_time gform-grid-col" id="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '">';
+
+					echo '<label class="gform-field-label gform-field-label--type-sub hour_label screen-reader-text" for="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] . '_1' ) . '">' . esc_attr( $field['inputs'][0]['label'] ) . '</label>';
+
+					echo '<input type="number" maxlength="2" name="' . esc_attr( 'input_' . $field['formId'] . '[]' ) . '" id="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] . '_1' ) . '" value="' . esc_attr( $hour ) . '" min="0" max="24" step="1" placeholder="HH" aria-required="false">';
 
 					echo '</div>';
 
-					echo '</div>';
+					echo '<div class="below hour_minute_colon gform-grid-col">:</div>';
 
-					echo '</div>';
+					echo '<div class="gfield_time_minute ginput_container ginput_container_time gform-grid-col">';
+
+					echo '<label class="gform-field-label gform-field-label--type-sub minute_label screen-reader-text" for="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] . '_2' ) . '">' . esc_attr( $field['inputs'][1]['label'] ) . '</label>';
+
+					echo '<input type="number" maxlength="2" name="' . esc_attr( 'input_' . $field['formId'] . '[]' ) . '" id="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] . '_2' ) . '" value="' . esc_attr( $minutes ) . '" min="0" max="59" step="1" placeholder="MM" aria-required="false">';
+
+					echo '</div><!-- /.gfield_time_minute ginput_container ginput_container_time gform-grid-col -->';
+
+					echo '</div> <!-- /.ginput_container ginput_complex gform-grid-row -->';
+
+					echo '</fieldset>';
 				}
 
 				if ( 'checkbox' === $field->type ) {
@@ -526,9 +583,6 @@ function get_user_information() {
 				}
 
 				if ( 'select' === $field->type ) {
-
-					//echo '<div id="' . esc_attr( 'gform_fields_' . $field['formId'] . '_' . count( $field['choices'] ) ) . '" class="gform_fields top_label form_sublabel_above description_above">';
-
 					echo '<div
 						id="' . esc_attr( 'field_' . $field['formId'] . '_' . $field['id'] ) . '"class="gfield ' . esc_attr( 'gfield--type-' . $field['type'] ) . esc_attr( $dimension_field ) . 'field_sublabel_above' . esc_attr( $class_added ) . esc_attr( $gfield_contains_required ) . esc_attr( $class_has_description ) . esc_attr( $class_position_description ) . esc_attr( $class_label ) . esc_attr( $class_visibility ) . '">';
 
@@ -536,7 +590,7 @@ function get_user_information() {
 
 					echo '<div class="ginput_container ginput_container_select">';
 
-					echo '<select name="' . esc_attr( 'input_' . $field->id ) . '" id="' . esc_attr( 'input_' . $field->id ) . '" class="large gfield_select" aria-invalid="false">';
+					echo '<select name="' . esc_attr( 'input_' . $field->id ) . '" id="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '" class="large gfield_select" aria-invalid="false">';
 
 					echo '<option value=""></option>';
 					foreach ( $field->choices as $choise ) {
@@ -557,13 +611,22 @@ function get_user_information() {
 
 					//echo '</div>';
 				}
+
+				if ( 'fileupload' === $field->type ) {
+					foreach ( $arr_data as $data ) {
+						if ( in_array( $field->id, $data ) ) {
+							$value = $data[1];
+						}
+					}
+					// var_dump( $value );
+				}
 			}
 			// var_dump( $arr_data );.
-			$string = array();
+			$string         = array();
 			$string['fid']  = $form_id;
 			$string['feid'] = $entry_id;
 			foreach ( $arr_data as $index => $data ) {
-				$string[$index] = array( $data[0], $data[1] );
+				$string[ $index ] = array( $data[0], $data[1] );
 			}
 			echo '<input type="hidden" id="results" data-results =\'' . json_encode( $string ) . '\' >';
 
@@ -573,9 +636,9 @@ function get_user_information() {
 
 			echo '</div>'; // gform_page_footer top_label".
 
-			echo '</div>'; //gform_page_fields.
+			echo '</div>'; // gform_page_fields.
 
-			echo '</div>'; //gform-body gform_body.
+			echo '</div>'; // gform-body gform_body.
 
 			echo '</form>';
 
@@ -628,7 +691,7 @@ function editform_ajax() {
 		send_notifications( $form_id, $entry_id );
 
 		$return = array(
-			'message'  => 'success',
+			'message' => 'success',
 		);
 		echo wp_send_json( $return );
 	}
