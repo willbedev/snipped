@@ -10,11 +10,17 @@ Questa cartella contine un codici custom e personalizzazioni di gravity form.
 ***
 ## Nuove funzionalità
 
-**19/12/2023**
-Aggiunta gestione time. 
-- Aggiunte funzionalità allo shortcode [edit_form], il campo ore è stato aggiunto.
-- Modificato il JS per gestire i campi dell'edit form ed inviarli alla funzione per il salvataggio dei dati e l'invio della notifica
--- versione 1.3.2
+**22/12/2023**
+Fix bug minory + modifca UI 
+- Fix salvataggio dati [edit_form].
+- Aggiunta modifica grafica quando si clicca su pulsante invia.
+
+**21/12/2023**
+Aggiunto textarea. 
+- Aggiunte funzionalità allo shortcode [edit_form], il campo texarea è stato aggiunto.
+- Fix errore json_encode del carattere apostrofo.
+- Modificato il JS per supportare la textarea.
+-- versione 1.4.3
 
 **15/12/2023**
 Aggiunto il datepicker. 

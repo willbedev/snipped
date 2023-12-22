@@ -635,7 +635,9 @@ EDIT FORM
 	color: var(--required-text-footer-color);
 }
 .gform_wrapper.gravity-theme form[id^='edit-form'] .gform_footer input[type='submit'],
-.gform_wrapper.gravity-theme form[id^='edit-form'] .gform_page_footer input[type='submit'],
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gform_page_footer input[type='submit']
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gform_page_footer button[type='submit'],
+.gform_wrapper.gravity-theme form[id^='edit-form'] .gform_page_footer button.gform_button,
 .gform_wrapper.gravity-theme form[id^='edit-form'] .gform_page_footer .gform_previous_button,
 .gform_wrapper.gravity-theme form[id^='edit-form'] .gform_page_footer .gform_next_button {
 	background-color: var(--input-submit-background-color);

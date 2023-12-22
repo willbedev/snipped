@@ -211,16 +211,23 @@ jQuery( document ).ready( function( $ ) {
 			if ( value[0].includes(".") ) {
 				var tmp = value[0].split('.');
 				value[0] = tmp[0] + '\\.' + tmp[1];
-			} 
-			if ( typeof $( "#"+value[0] ).prop('type') === 'undefined' ) {
-				$( "#"+value[0] + ' input' ).each( function(index2, value2) {
+			}
+
+			// console.log( $( "#input_"+id_form+"_"+value[0] ), $( "#input_"+id_form+"_"+value[0] ).prop('type') );
+
+			/*if ( typeof $( "#input_"+id_form+"_"+value[0] ).prop('type') === 'undefined' ) {
+				$( "#input_"+value[0] + ' input' ).each( function(index2, value2) {
 					if ( $(value2).is(':checked') ) {
 						data[index][1] = $(value2).val();
 					}
 				});
-			}
+			}*/
 
 			if ( $( "#input_"+id_form+"_"+value[0] ).prop('type') === 'text' ) {
+				data[index][1] = $( "#input_"+id_form+"_"+value[0] ).val();
+			}
+
+			if ( $( "#input_"+id_form+"_"+value[0] ).prop('type') === 'textarea' ) {
 				data[index][1] = $( "#input_"+id_form+"_"+value[0] ).val();
 			}
 
@@ -253,10 +260,6 @@ jQuery( document ).ready( function( $ ) {
 					data[index][1] = $( "#"+value[0] ).val();
 				}
 			}
-
-			if ( $( "#"+value[0] ).prop('type') === 'textarea' ) {
-				data[index][1] = $( "#"+value[0] ).val();
-			}
 		});
 		
 		$.ajax({
@@ -268,7 +271,7 @@ jQuery( document ).ready( function( $ ) {
 				//security : ajax_edit_form.security,
 			},
 			beforeSend:function(xhr){
-				//btnLoadMore.text('Caricando...'); // changing the button label
+				$( '#edit-form-submit-modify' ).append( '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: transparent; display: block;" width="30px" height="30px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><g transform="translate(20 50)"><circle cx="0" cy="0" r="20" fill="#456caa"><animateTransform attributeName="transform" type="scale" begin="-0.375s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite"></animateTransform></circle></g><g transform="translate(40 50)"><circle cx="0" cy="0" r="20" fill="#88a2ce"><animateTransform attributeName="transform" type="scale" begin="-0.25s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite"></animateTransform></circle></g><g transform="translate(60 50)"><circle cx="0" cy="0" r="20" fill="#c2d2ee"><animateTransform attributeName="transform" type="scale" begin="-0.125s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite"></animateTransform></circle></g><g transform="translate(80 50)"><circle cx="0" cy="0" r="20" fill="#fefefe"><animateTransform attributeName="transform" type="scale" begin="0s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite"></animateTransform></circle></g></svg>');
 			},
 			success: function( response ) {
 				if ( response.message === 'success' ) {
@@ -279,7 +282,7 @@ jQuery( document ).ready( function( $ ) {
 				console.log( errorThrown );
 			},
 			complete: function(){
-				//btnLoadMore.text(btnLoadMoreTxt); // changing the button label
+				$( '#edit-form-submit-modify svg' ).remove();
 			}
 		});
 

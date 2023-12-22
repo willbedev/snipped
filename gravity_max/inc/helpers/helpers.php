@@ -263,7 +263,7 @@ add_filter(
  * Lo shortcode leggere i parametri fid (ID form), email (USER email ID), feid (ENTITY ID form) che vengono passati dall'url inserito
  * nell'email con la funzione gform_pre_send_email.
  *
- * @version 1.3.2
+ * @version 1.4.4
  *
  * @return mixed struttura html form con informazioni utente.
  */
@@ -293,7 +293,6 @@ function get_user_information() {
 
 		$arr_data = array();
 		foreach ( $results as $result ) {
-			// get the field.
 			array_push( $arr_data, array( $result->meta_key, $result->meta_value ) );
 		}
 
@@ -305,7 +304,7 @@ function get_user_information() {
 			$form  = GFAPI::get_form( $form_id );
 
 			/*echo '<pre>';
-			var_dump( $form['fields'] );
+			var_dump( $form['fields'][1] );
 			echo '</pre>';*/
 
 			echo '<div class="gform_wrapper gravity-theme gform-theme--no-framework" data-form-theme="gravity-theme">';
@@ -390,6 +389,8 @@ function get_user_information() {
 					}
 				}
 
+				$max_length = ( $field['maxLength'] ) ? $field['maxLength'] : '';
+
 				if ( 'text' === $field->type ) {
 					foreach ( $arr_data as $data ) {
 						if ( in_array( $field->id, $data ) ) {
@@ -413,7 +414,12 @@ function get_user_information() {
 					echo '<div class="ginput_container ginput_container_text">';
 					$aria_required = ( $field['isRequired'] ) ? ' aria-required="true" ' : '';
 
-					echo '<input name="' . esc_attr( 'input_' . $field['id'] ) . '" id="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '" type="' . esc_attr( $field['type'] ) . '" value="' . $value . '" class="' . esc_attr( $field->size ) . '"' . $aria_required . 'aria-invalid="false">';
+					echo '<input name="' . esc_attr( 'input_' . $field['id'] ) . '" id="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '" type="' . esc_attr( $field['type'] ) . '" maxlength="' . esc_attr( $max_length ) . '" value="' . $value . '" class="' . esc_attr( $field->size ) . '"' . $aria_required . ' aria-invalid="false">';
+
+					if ( '' !== $max_length ) {
+						echo '<div class="charleft ginput_counter gfield_description" aria-live="polite">0 di ' . esc_attr( $max_length ) . ' numero massimo di caratteri</div>';
+					}
+
 					echo '</div>';
 
 					if ( 'below' === $description_placement ) {
@@ -424,15 +430,42 @@ function get_user_information() {
 				}
 
 				if ( 'textarea' === $field->type ) {
-					$dimension_field = ' gfield--width-full ';
 					foreach ( $arr_data as $data ) {
 						if ( in_array( $field->id, $data ) ) {
 							$value = $data[1];
 						}
 					}
-					echo '<div>';
-					echo '<label>' . $field->label . ' ' . $span . '</label>';
-					echo '<textarea id="' . $field->id . '" type="' . $field->type . '" class="' . $field->size . '" placeholder="' . $field->placeholder . '">' . $value . '</textarea>';
+
+					if ( '' === $value ) {
+						return;
+					}
+
+					$dimension_field = ' gfield--width-full ';
+					$aria_required   = ( $field['isRequired'] ) ? ' aria-required="true" ' : '';
+
+					echo '<div
+						id="' . esc_attr( 'field_' . $field['formId'] . '_' . $field['id'] ) . '"class="gfield ' . esc_attr( 'gfield--type-' . $field['type'] ) . esc_attr( $dimension_field ) . 'field_sublabel_above' . esc_attr( $class_added ) . esc_attr( $gfield_contains_required ) . esc_attr( $class_has_description ) . esc_attr( $class_position_description ) . esc_attr( $class_label ) . esc_attr( $class_visibility ) . '" data-js-reload="' . esc_attr( 'field_' . $field['formId'] . '_' . $field['id'] ) . '">';
+
+					echo '<label class="gfield_label gform-field-label" for="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '">' . $field->label . $span . '</label>';
+
+					if ( 'above' === $description_placement || '' === $description_placement) {
+						echo '<div class="gfield_description" id="' . esc_attr( 'gfield_description_' . $field['formId'] . '_' . $field['id'] ) . '">' . esc_html( $description_value ) . '</div>';
+					}
+
+					echo '<div class="ginput_container ginput_container_textarea">';
+
+					echo '<textarea name="' . esc_attr( 'input_' . $field['id'] ) . '" id="' . esc_attr( 'input_' . $field['formId'] . '_' . $field['id'] ) . '" class="textarea ' . $field->size . '" aria-describedby="' . esc_attr( 'gfield_description_' . $field['formId'] . '_' . $field['id'] ) . '" maxlength="' . esc_attr( $max_length ) . '" ' . $aria_required . ' aria-invalid="false" rows="10" cols="50">' . $value . '</textarea>';
+
+					if ( '' !== $max_length ) {
+						echo '<div class="charleft ginput_counter gfield_description" aria-live="polite">0 di ' . esc_attr( $max_length ) . ' numero massimo di caratteri</div>';
+					}
+
+					echo '</div>';
+
+					if ( 'below' === $description_placement ) {
+						echo '<div class="gfield_description" id="' . esc_attr( 'gfield_description_' . $field['formId'] . '_' . $field['id'] ) . '">' . esc_html( $description_value ) . '</div>';
+					}
+
 					echo '</div>';
 				}
 
@@ -552,6 +585,7 @@ function get_user_information() {
 				}
 
 				if ( 'checkbox' === $field->type ) {
+
 					if ( 'Privacy' === $field->label ) {
 						break;
 					}
@@ -621,18 +655,22 @@ function get_user_information() {
 					// var_dump( $value );
 				}
 			}
-			// var_dump( $arr_data );.
+
 			$string         = array();
 			$string['fid']  = $form_id;
 			$string['feid'] = $entry_id;
 			foreach ( $arr_data as $index => $data ) {
+				$search  = array( '\'' );
+				$replace = array( '\c101d' );
+				$data[1] = str_replace( $search, $replace, $data[1] );
+
 				$string[ $index ] = array( $data[0], $data[1] );
 			}
 			echo '<input type="hidden" id="results" data-results =\'' . json_encode( $string ) . '\' >';
 
 			echo '<div class="gform_page_footer top_label">';
 
-			echo '<input type="submit" id="edit-form-submit-modify" class="gform_button button" value="Invia">';
+			echo '<button type="submit" id="edit-form-submit-modify" class="gform_button button">Invia</button>';
 
 			echo '</div>'; // gform_page_footer top_label".
 
@@ -662,7 +700,7 @@ add_shortcode( 'edit_form', 'get_user_information' );
  * Questa funzione riceve le informazioni del form e aggiorna i meta del form che si sta modificando.
  * Invia inoltre una notifica all'utente con la funzione send_notifications.
  *
- * @version 1.0.0
+ * @version 1.1.2
  *
  * @return json messaggio di ritorno in formato json.
  */
@@ -680,8 +718,22 @@ function editform_ajax() {
 		$entry_id = $_POST['data']['feid'];
 
 		foreach ( $_POST['data'] as $index => $data ) {
+
+			// for id with point like 16.1.
 			if ( strpos( $data[0], '\\' ) ) {
 				$data[0] = str_replace( '\\', '', $data[0] );
+			}
+
+			if ( strpos( $data[1], '\\' ) ) {
+				$data[1] = str_replace( '\\', '', $data[1] );
+			}
+
+			if ( strpos( $data[1], '/', 0 ) ) {
+				// modifico come la data viene salvata su DB.
+				if ( 10 === strlen( $data[1] ) ) {
+					$tmp2    = explode( '/', $data[1] );
+					$data[1] = $tmp2[2] . '-' . $tmp2[0] . '-' . $tmp2[1]; // YYY-mm-dd.
+				}
 			}
 
 			if ( ! is_string( $data ) ) {
@@ -691,7 +743,7 @@ function editform_ajax() {
 		send_notifications( $form_id, $entry_id );
 
 		$return = array(
-			'message' => 'success',
+			'message' => 'error',
 		);
 		echo wp_send_json( $return );
 	}
