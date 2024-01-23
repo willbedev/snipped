@@ -2,6 +2,10 @@
 /* https://gs.statcounter.com/ */ 
 /* compatibilità css: https://caniuse.com/ */
 
+/*  Clssi con selettore   */
+[class*='col-'] {border: 1px;} /* inserisce a tutte le classi che contengono "col-" il bordo come da stile */
+
+
 /*  ereditarietà   */
 /* il css viene letto dall'alto verso il basso */
 .div  h1 { color: red; }

@@ -25,6 +25,9 @@
 }
 
 .box-interno {
-	/* se il container è impostato su 3 colonne (1fr 1fr 1fr)*/ 
-	grid-column: 1/4; /* Prende tutte e 3 le colonne in larghezza, con 1/3 prende due terzi */ 
+	/* se il container è impostato su 3 colonne (1fr 1fr 1fr) oppure repeat(3, 1fr); */ 
+	grid-column: 1/4; /* Prende tutte e 3 le colonne in larghezza, se si imposta  1/3 prende due terzi */ 
 }
+
+
+
