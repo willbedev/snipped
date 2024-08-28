@@ -1,0 +1,28 @@
+<script>
+  window.addEventListener("message", (event) => {
+    if(event?.data )
+      console.log("EVENT:", event.data);
+  });
+</script>
+
+
+<!-- *** Adattato per custom html di GTM *** -->
+
+
+<script type="text/javascript"> 
+    window.dataLayer = window.dataLayer || []; // makes sure the data layer variable is set
+    window.addEventListener("message", function(event) { // listens to messages from iframes
+        if(event.data.) { // checks if the received event is a new booked meeting
+            dataLayer.push({ // sends an event to the data layer
+            event: "prenotazione",
+            modulo: event.data
+        });
+        } 
+    });
+ /*
+  * v0.1.0
+  * Created by Data Marketing School at http://www.data-marketing-school.com
+  * tutotial: https://data-marketing-school.com/en/blog/google-tag-manager/hubspot-meetings-iframe/
+  * Written by https://www.linkedin.com/in/lucasrollin/
+  */
+</script>

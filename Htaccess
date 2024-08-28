@@ -1,0 +1,2 @@
+#Ridireziona solo homepage
+RedirectMatch 302 ^/$ https://www.fondoforte.it/

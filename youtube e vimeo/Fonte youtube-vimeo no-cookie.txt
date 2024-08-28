@@ -1,0 +1,6 @@
+https://rickylee.com/2018/03/26/youtube-nocookie-gdpr-wordpress/
+
+Per Vimeo inserire parametro ignore nell'iframe per ignorare il controllo dei cookie
+
+  <iframe  width="640" height="420" src="https://player.vimeo.com/video/699727280?h=0d464b0787&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" data-cookieconsent="ignore" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Our Purpose, Promise and Values">
+        </iframe>
