@@ -14,3 +14,25 @@ function bbloomer_checkout_coupon_below_payment_button() {
 	echo '<hr>';
 	woocommerce_checkout_coupon_form();
  }
+
+
+// Rename the coupon field on the checkout page
+// fonte: https://aovup.com/woocommerce/change-apply-coupon-button-text/
+
+function woocommerce_rename_coupon_field_on_checkout( $translated_text, $text, $text_domain ) {
+
+	// bail if not modifying frontend woocommerce text
+	if ( is_admin() || 'woocommerce' !== $text_domain ) {
+		return $translated_text;
+	}
+
+	if ( 'Coupon code' === $text ) {
+		$translated_text = 'Inserisci Digitoken';
+	
+	} elseif ( 'Apply coupon' === $text ) {
+		$translated_text = 'APPLICA';
+	}
+
+	return $translated_text;
+}
+add_filter( 'gettext', 'woocommerce_rename_coupon_field_on_checkout', 10, 3 );
