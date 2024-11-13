@@ -1,3 +1,5 @@
+<?php
+
 // Rimuovere le opzioni di spedizione a pagamento se la spedizione gratuita è disponibile
 add_filter('woocommerce_package_rates', 'nascondi_spedizioni_a_pagamento_se_gratis_v2', 10, 2);
 

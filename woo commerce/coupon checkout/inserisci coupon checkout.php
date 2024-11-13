@@ -1,3 +1,5 @@
+<?php
+
 /** Sposta il coupon nel checkout 
  * @snippet       Display Coupon Form @ WooCommerce Checkout (Bottom)
  * @how-to        Get CustomizeWoo.com FREE
