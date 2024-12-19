@@ -122,11 +122,45 @@
 	color: var(--label-color);
     left: 15px;
 }
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-text.field_description_above > .gfield_label.gform-field-label {
+    top: 25px;
+}
+
 .gform_wrapper.gravity-theme form[id^='gform'] .gfield label.gfield_label.focused {
     color: var(--label-color-focused);
     background-color: var(--white-color);
     left: 5px;
     padding: 3px;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-quiz.gfield--input-type-select .gfield_label {
+    background-color: var(--white-color);
+    width: 95%;
+    top:25px;
+    left: 2px;
+    padding-left: 10px;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-quiz.gfield--input-type-select .gfield_label.focused{
+    color: var(--label-color-focused);
+    background-color: var(--white-color);
+    left: 5px;
+    top: 0;
+    padding: 3px;
+    width: auto;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-product.gfield--type-choice .gfield_label {
+    color: var(--label-color);
+    left: 15px;
+    top: -10px;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-radio.gfield--type-choice .gfield_label {
+    color: var(--label-color);
+    left: 15px;
+    top: -10px;
+}
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-quiz.gfield--type-choice .gfield_label {
+    color: var(--label-color-focused);
+    left: 15px;
+    top: -20px;
 }
 .gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-date .gfield_label.focused {
     color: var(--label-color-focused);
@@ -187,7 +221,9 @@
 
 .gform_wrapper.gravity-theme form[id^='gform'] .gfield_error select[aria-invalid=true],
 .gform_wrapper.gravity-theme form[id^='gform'] .gfield_error textarea[aria-invalid=true] {
-    border-bottom-color: 2px solid var(--input-border-color);
+    /*border-bottom-color: 2px solid var(--input-border-color);*/
+    border: 1px solid var(--input-border-color);
+    color: var(--input-text-color);
 }
 /* end input */
 
@@ -225,8 +261,8 @@
 
 /* override checkbox - se si vuole personalizzare lo sfondo di una checkbox decommentare di seguito */
 .gform_wrapper.gravity-theme form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:before {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     top: 0;
     left: 0;
 }
@@ -260,6 +296,10 @@
 
 
 /* Trasforma il pulsante input file upload input[type="file"] */
+.gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-fileupload i.fa.fa-upload {
+    top: 78px;
+}
+
 /* Chrome, Safari */
 /*#gform_8 ::-webkit-file-upload-button {*/
 .gform_wrapper.gravity-theme form[id^='gform'] input[type="file"]::-webkit-file-upload-button {

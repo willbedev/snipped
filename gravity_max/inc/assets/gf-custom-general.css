@@ -198,19 +198,19 @@
 }
 
 .gform_wrapper.gravity-theme form[id^='gform'] .gfield-choice-input[type=checkbox]:checked:before {
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
 }
 
 .gform_wrapper.gravity-theme form[id^='gform'] .gfield-choice-input[type=radio]:checked:before {
-	width: 10px;
-    height: 10px;
+	width: 11px;
+    height: 11px;
 }
 .gform_wrapper.gravity-theme form[id^='gform'] .gfield_radio > .gchoice:nth-child(3) > .gfield-choice-input[type=radio]:checked:before {
-    width: 10px;
+    width: 11px;
 }
 .gform_wrapper.gravity-theme form[id^='gform'] .gfield_radio > .gchoice:nth-child(4) > .gfield-choice-input[type=radio]:checked:before {
-    width: 10px;
+    width: 11px;
 }
 
 .gform_wrapper.gravity-theme form[id^='gform'] .gfield.gfield--type-checkbox > legend {
