@@ -1,0 +1,14 @@
+✅ 1. Crea il campo nel form
+	•	Vai in Gravity Forms > modifica il tuo form
+	•	Aggiungi un campo nascosto (tipo: “Hidden”)
+	•	Vai su Avanzate → spunta “Consenti popolamento dinamico”
+	•	Dai al campo un nome parametro dinamico, ad esempio:
+
+    page_title
+
+
+    ✅ 2. Inserisci questo codice PHP nel functions.php del tuo tema (child):
+
+    add_filter( 'gform_field_value_page_title', function( $value ) {
+    return get_the_title();
+});
